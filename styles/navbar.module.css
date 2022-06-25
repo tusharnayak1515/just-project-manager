@@ -1,0 +1,65 @@
+.navbar {
+    height: 12vh;
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    background-color: rgb(1, 1, 37);
+}
+
+.navbar .leftSide {
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: orange; */
+}
+
+.navbar .leftSide .logo {
+    margin-right: 3rem;
+}
+
+.navbar .leftSide .menus {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .leftSide .menus a {
+    font-size: 1.2rem;
+    margin: 0 1rem;
+}
+
+.navbar .middle {
+    width: 30rem;
+    padding: 0.5rem;
+    /* background-color: orange; */
+}
+
+.navbar .middle input {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    outline: none;
+    font-size: 1.2rem;
+    border: 0.1rem solid grey;
+    border-radius: 0.8rem;
+}
+
+.navbar .rightSide {
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: orange; */
+}
+
+.navbar .rightSide h1 {
+    cursor: pointer;
+}
+
+.navbar .rightSide a {
+    font-size: 1.2rem;
+    margin: 0 1rem;
+}
