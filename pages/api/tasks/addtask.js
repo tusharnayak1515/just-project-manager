@@ -3,8 +3,15 @@ import User from "../../../models/User";
 import fetchUser from "../../../middlewares/fetchUser";
 import Project from "../../../models/Project";
 import Task from "../../../models/Task";
+import Joi from "joi";
+import validate from "../../../middlewares/validate";
+// import { setCookies } from "cookies-next";
 
-const handler = async (req, res)=> {
+const schema = Joi.object({
+  title: Joi.string().min(4).required()
+});
+
+const handler = validate({body: schema}, async (req, res)=> {
   connectToMongo();
   if (req.method === 'POST') {
     let success;
@@ -39,8 +46,10 @@ const handler = async (req, res)=> {
       project = await Project.findByIdAndUpdate(projectId, {$push: {tasks: task}},{new: true})
         .populate("tasks", "_id title status project")
       
-      const tasks = await Task.find({project: projectId})
-        .populate("project", "_id title description tasks status");
+      const tasks = await Task.find({project: projectId});
+        // .populate("project", "_id title description tasks status");
+
+      // setCookies("jpm_tasks", JSON.stringify(tasks), {req,res});
 
       success = true;
       return res.json({ success, project, tasks, status: 200 });
@@ -50,6 +59,6 @@ const handler = async (req, res)=> {
       return res.json({success, error: error.message, status: 500});
     }
   }
-}
+});
 
 export default fetchUser(handler);

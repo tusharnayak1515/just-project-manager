@@ -1,0 +1,24 @@
+.project_box {
+    min-height: 3rem;
+    width: 15rem;
+    padding: 1rem 2rem;
+    margin: 1rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    border: 0.1rem solid #010125;
+    border-radius: 0.5rem;
+    background-color: white;
+}
+
+.project_box h3 {
+    width: 100%;
+    word-wrap: break-word;
+    cursor: pointer;
+}
+
+.project_box h3:hover {
+    /* color: rgb(3, 96, 96); */
+    text-decoration: underline;
+}

@@ -9,13 +9,26 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mui/icons-material": "^5.8.4",
+    "@mui/material": "^5.8.6",
+    "@reduxjs/toolkit": "^1.8.2",
     "axios": "^0.27.2",
     "bcryptjs": "^2.4.3",
+    "cookie": "^0.5.0",
+    "cookies-next": "^2.0.5",
+    "joi": "^17.6.0",
+    "joi-password": "^3.0.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.4.0",
     "next": "12.1.6",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "next-joi": "^2.2.1",
+    "next-redux-wrapper": "^7.0.5",
+    "react": "^18.2.0",
+    "react-dom": "18.2.0",
+    "react-icons": "^4.4.0",
+    "react-redux": "^8.0.2",
+    "redux": "^4.2.0",
+    "redux-thunk": "^2.4.1"
   },
   "devDependencies": {
     "eslint": "8.18.0",

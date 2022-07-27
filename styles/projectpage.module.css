@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo&family=Trispace:wght@200;600&display=swap');
+
+.projectpage {
+    min-height: 88vh;
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: orange; */
+}
+
+.projectpage .title {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-family: 'Trispace', sans-serif;
+    font-size: 3rem;
+}
+
+.projectpage .description {
+    margin-bottom: 2rem;
+    font-family: 'Trispace', sans-serif;
+    font-size: 1.3rem;
+}
+
+.projectpage .icons {
+    position: absolute;
+    top: 18%;
+    right: 5%;
+    padding: 0.2rem 0.5rem;
+    width: 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: hotpink; */
+}
+
+.projectpage .icons h2 {
+    cursor: pointer;
+}
+
+.projectpage .icons .editIcon:hover {
+    /* color: rgb(141, 92, 0); */
+    color: orangered;
+}
+
+.projectpage .icons .deleteIcon:hover {
+    color: red;
+}
+
+.projectpage .subhead {
+    font-family: 'Cairo', sans-serif;
+}
+
+.projectpage .tasks_container {
+    width: 65%;
+    min-height: 100%;
+    margin-top: 2rem;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-column-gap: 0.5rem;
+    grid-row-gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+    /* background-color: green; */
+}
+
+.projectpage .task_card {
+    /* position: relative; */
+    min-height: 10rem;
+    width: 11rem;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    border: 0.1rem solid #010125;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.projectpage .task_card.task_items:hover {
+    background-color: rgb(226, 226, 226) !important;
+}
+
+.projectpage .task_card h2 {
+    text-align: center;
+    word-wrap: break-word;
+}
+
+/* .projectpage .task_card .iconsDiv {
+    position: absolute;
+    top: 5%;
+    width: 90%;
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: red;
+} */
+
+.projectpage .task_card .task_title {
+    width: 100%;
+    word-wrap: break-word;
+    /* background-color: yellow; */
+}
+
+.projectpage .task_card .taskicons {
+    cursor: pointer;
+}
+
+/* .projectpage .task_card .editTask {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+} */
+
+.projectpage .task_card .editTask:hover {
+    color: orangered;
+}
+
+/* .projectpage .task_card .deleteTask {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+} */
+
+.projectpage .task_card .deleteTask:hover {
+    color: red;
+}
+
+.projectpage .task_card .add {
+    cursor: pointer;
+}

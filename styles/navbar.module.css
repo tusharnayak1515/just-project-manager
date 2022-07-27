@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@500&family=Mochiy+Pop+One&display=swap');
+
 .navbar {
     height: 12vh;
     width: 100%;
@@ -19,6 +21,9 @@
 
 .navbar .leftSide .logo {
     margin-right: 3rem;
+    color: aqua;
+    font-family: 'Mochiy Pop One', sans-serif;
+    cursor: pointer;
 }
 
 .navbar .leftSide .menus {
@@ -27,9 +32,14 @@
     align-items: center;
 }
 
-.navbar .leftSide .menus a {
-    font-size: 1.2rem;
+.navbar .leftSide .menus h3 {
     margin: 0 1rem;
+    font-family: 'Inconsolata', monospace;
+    cursor: pointer;
+}
+
+.navbar .leftSide .menus h3:hover {
+    color: aqua;
 }
 
 .navbar .middle {
@@ -59,7 +69,19 @@
     cursor: pointer;
 }
 
-.navbar .rightSide a {
-    font-size: 1.2rem;
+.navbar .rightSide h1:hover {
+    color: aqua;
+}
+
+.navbar .rightSide h3 {
     margin: 0 1rem;
+    cursor: pointer;
+}
+
+.navbar .rightSide h3:hover {
+    color: aqua;
+}
+
+.activelink {
+    color: aqua !important;
 }

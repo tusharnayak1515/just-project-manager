@@ -3,7 +3,6 @@ import User from "../../../models/User";
 import fetchUser from "../../../middlewares/fetchUser";
 import Project from "../../../models/Project";
 import Task from "../../../models/Task";
-import { setCookies } from "cookies-next";
 
 const handler = async (req, res)=> {
   connectToMongo();
@@ -11,19 +10,23 @@ const handler = async (req, res)=> {
     let success;
     try {
       const userId = req.user.id;
+      const projectId = req.query.project;
       const user = await User.findById(userId);
       if(!user) {
         success = false;
         return res.json({success, error: "User doesnot exist", status: 404});
       }
       
-      const projects = await Project.find({user: userId})
+      const project = await Project.findById(projectId)
         .populate("tasks", "_id title status project");
 
-      setCookies("jpm_projects", JSON.stringify(projects), {req, res});
+      if(!project) {
+        success = false;
+        return res.json({success, error: "Project Not Found!", status: 404});
+      }
 
       success = true;
-      return res.json({ success, projects, status: 200 });
+      return res.json({ success, project, status: 200 });
 
     } catch (error) {
       success = false;

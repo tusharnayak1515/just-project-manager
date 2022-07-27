@@ -1,10 +1,11 @@
 const jwt = require('jsonwebtoken');
 const secret = process.env.JWT_SECRET;
+import { getCookie } from 'cookies-next';
 
 const fetchUser = (handler)=> {
     let success;
     return async (req,res)=> {
-        const token =  req.headers.user_token;
+        const token = getCookie("user_token",{req, res}) || req.headers.user_token;
         if(!token) {
             success = false;
             return res.json({success, error: "Invalid token!", status: 401});

@@ -3,6 +3,7 @@ import User from "../../../models/User";
 import fetchUser from "../../../middlewares/fetchUser";
 import Project from "../../../models/Project";
 import Task from "../../../models/Task";
+import { setCookies } from "cookies-next";
 
 const handler = async (req, res)=> {
   connectToMongo();
@@ -28,13 +29,18 @@ const handler = async (req, res)=> {
         return res.json({success, error: "Not Allowed!", status: 405});
       }
 
+      user = await User.findByIdAndUpdate(userId, {$pull: {projects: projectId}},{new: true})
+        .populate("projects", "_id title description tasks status");
+
       project = await Project.findByIdAndDelete(projectId,{new: true});
       
       const projects = await Project.find({user: userId})
         .populate("tasks", "_id title status project");
 
+      setCookies("jpm_projects", JSON.stringify(projects), {req,res});
+
       success = true;
-      return res.json({ success, projects, status: 200 });
+      return res.json({ success, status: 200 });
 
     } catch (error) {
       success = false;

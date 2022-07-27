@@ -2,8 +2,15 @@ import connectToMongo from "../../../db";
 import User from "../../../models/User";
 import fetchUser from "../../../middlewares/fetchUser";
 import Project from "../../../models/Project";
+import Joi from "joi";
+import validate from "../../../middlewares/validate";
 
-const handler = async (req, res)=> {
+const schema = Joi.object({
+  name: Joi.string().min(4).required(),
+  email: Joi.string().email().required()
+});
+
+const handler = validate({ body: schema }, async (req, res)=> {
   connectToMongo();
   if (req.method === 'PUT') {
     let success;
@@ -28,6 +35,6 @@ const handler = async (req, res)=> {
       return res.json({success, error: error.message, status: 500});
     }
   }
-}
+});
 
 export default fetchUser(handler);

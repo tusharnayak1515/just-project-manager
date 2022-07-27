@@ -1,0 +1,72 @@
+.overlay {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    min-height: 100%;
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    background-color: rgba(0, 0, 0, 0.384);
+    z-index: 10;
+}
+
+.modal {
+    height: 50vh;
+    width: 30%;
+    padding: 2rem;
+    margin-top: 10vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: white;
+    z-index: 5;
+    opacity: 1;
+}
+
+.modal input, .modal button, .modal select {
+    outline: none;
+    width: 15rem;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+}
+
+.modal input, .modal select {
+    margin: 0.5rem 0;
+    border: 0.1rem solid #010118;
+}
+
+.modal button {
+    cursor: pointer;
+}
+
+.modal .add_btn {
+    margin-bottom: 0.5rem;
+    color: white;
+    border: 0.1rem solid aqua;
+    background-color: #010118;
+    cursor: pointer;
+}
+
+.modal .add_btn:hover {
+    color: #010118;
+    background-color: white;
+    transition: all 0.2s ease-in-out;
+}
+
+.modal .delete_btn {
+    margin-bottom: 0.5rem;
+    color: white;
+    border: 0.1rem solid aqua;
+    background-color: red;
+    cursor: pointer;
+}
+
+.modal .delete_btn:hover {
+    color: red;
+    background-color: white;
+    transition: all 0.2s ease-in-out;
+}
