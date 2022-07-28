@@ -33,7 +33,7 @@ const Navbar = ({setShow}) => {
       </div>
       <div className={styles.rightSide}>
         <h1 onClick={(e)=> {e.preventDefault();setShow(true)}}>+</h1>
-        <Link href='/profile'><h3 className={router.pathname === '/profile' ? styles.activelink: ''}>{profile?.name}</h3></Link>
+        <Link href='/profile'><h3 className={router.pathname === '/profile' ? styles.activelink: ''}>Profile</h3></Link>
         <h3 onClick={onLogout}><a>Logout</a></h3>
       </div>
     </nav>
