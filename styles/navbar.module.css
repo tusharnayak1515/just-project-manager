@@ -75,6 +75,7 @@
 
 .navbar .rightSide h3 {
     margin: 0 1rem;
+    font-family: 'Inconsolata', monospace;
     cursor: pointer;
 }
 

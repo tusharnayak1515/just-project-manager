@@ -5,9 +5,11 @@ import dynamic from 'next/dynamic';
 const Navbar = dynamic(() => import("../components/Navbar"), {
   ssr: false,
 });
+import Modal from '../components/Modal';
+import { ToastContainer } from 'react-toastify';
 
 import '../styles/globals.css';
-import Modal from '../components/Modal';
+import 'react-toastify/dist/ReactToastify.css';
 
 function MyApp({ Component, pageProps }) {
   const [show, setShow] = useState(false);
@@ -16,6 +18,7 @@ function MyApp({ Component, pageProps }) {
     {show && <Modal setShow={setShow} />}
     {user && <Navbar setShow={setShow} />}
     <Component {...pageProps} />
+    <ToastContainer />
   </Fragment>
 }
 

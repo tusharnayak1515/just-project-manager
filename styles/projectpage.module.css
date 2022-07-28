@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Cairo&family=Trispace:wght@200;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap');
 
 .projectpage {
     min-height: 88vh;
@@ -84,6 +85,7 @@
 }
 
 .projectpage .task_card h2 {
+    font-family: 'Titillium Web', sans-serif;
     text-align: center;
     word-wrap: break-word;
 }

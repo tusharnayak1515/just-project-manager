@@ -26,8 +26,6 @@ const Navbar = ({setShow}) => {
         </div>
         <div className={styles.menus}>
           <Link href='/'><h3 className={router.pathname === '/' ? styles.activelink : ''}>Dashboard</h3></Link>
-          <Link href='/about'><h3 className={router.pathname === '/about' ? styles.activelink : ''}>About</h3></Link>
-          <Link href='/contact'><h3 className={router.pathname === '/contact' ? styles.activelink : ''}>Contact</h3></Link>
         </div>
       </div>
       <div className={styles.middle}>

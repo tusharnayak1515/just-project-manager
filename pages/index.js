@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useSelector, shallowEqual ,useDispatch } from 'react-redux';
 import { actionCreators } from '../redux';
 import { wrapper } from '../redux/store';
@@ -37,16 +37,16 @@ export default function Home() {
           Welcome to Just-Project Manager
         </h1>
 
-        <h2 className={styles.description}>
+        <h1 className={styles.description}>
           My Projects
-        </h2>
+        </h1>
 
         <Projects />
         
       </main>
 
       <footer className={styles.footer}>
-        <h4>Copyrights © JustCommunity</h4>
+        <h3>Copyrights © JustCommunity</h3>
       </footer>
     </div>
   )

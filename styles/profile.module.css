@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@500&family=Inconsolata:wght@500&family=Josefin+Sans:wght@600&display=swap');
+
+.profile_div {
+    min-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: orange; */
+}
+
+.profile_div .profile_head {
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.profile_div .box {
+    width: 35%;
+    padding: 1rem;
+    min-height: 30vh;
+    max-height: 40vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 0.1rem solid black;
+    border-radius: 0.5rem;
+    box-shadow: 0.05rem 0.05rem 0.3rem 0.1rem grey;
+    /* background-color: yellowgreen; */
+    background-color: white;
+}
+
+.profile_div .box .flexDiv {
+    width: 80%;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* background-color: pink; */
+}
+
+.profile_div .box .flexDiv h2, .profile_div .box .flexDiv input {
+    margin-right: 1rem;
+}
+
+.profile_div .box .flexDiv h2 {
+    font-family: 'Cormorant SC', serif;
+}
+
+.profile_div .box .flexDiv input {
+    outline: none;
+    font-size: 1.2rem;
+    font-family: 'Inconsolata', monospace;
+    padding: 0.5rem 1rem;
+    border: 0.1rem solid black;
+    border-radius: 0.5rem;
+}
+
+.profile_div .box .flexDiv .icons {
+    cursor: pointer;
+}
+
+.profile_div .box .btnDiv {
+    width: 90%;
+    /* padding: 1rem; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background-color: orange; */
+}
+
+.profile_div .box .btnDiv button {
+    outline: none;
+    width: 80%;
+    padding: 0.5rem 2rem;
+    margin: 0.5rem 0;
+    color: white;
+    font-size: 1.2rem;
+    font-family: 'Cormorant SC', serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.profile_div .box .btnDiv .editbtn {
+    background-color: rgb(0, 0, 91);
+}
+
+.profile_div .box .btnDiv .editbtn:hover {
+    color: rgb(0, 0, 91);
+    background-color: white;
+    transition: all 0.2s ease-in-out;
+}
+
+.profile_div .box .btnDiv .cancelbtn {
+    background-color: red;
+}
+
+.profile_div .box .btnDiv .cancelbtn:hover {
+    color: red;
+    background-color: white;
+    transition: all 0.2s ease-in-out;
+}

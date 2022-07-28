@@ -1,6 +1,10 @@
 import axios from 'axios';
 import { getCookie, removeCookies } from 'cookies-next';
 // import { getCookie} from 'redux-cookie';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+// toast.configure();
 
 export const register = ({name,email,password})=> async (dispatch)=> {
     try {
@@ -8,7 +12,15 @@ export const register = ({name,email,password})=> async (dispatch)=> {
         
         if(res.data.success) {
             // console.log();
-            // localStorage.removeItem("jpm_error");
+            toast.success('Registration Successfull!', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
             dispatch({
                 type: 'register',
                 payload: {
@@ -18,21 +30,26 @@ export const register = ({name,email,password})=> async (dispatch)=> {
         }
 
         if(res.data.error) {
-            // localStorage.setItem("jpm_error",res.data.error);
-            dispatch({
-                type: 'register',
-                payload: {
-                    error: res.data.error
-                }
+            toast.error(res.data.error, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
             });
         }
 
     } catch (error) {
-        dispatch({
-            type: 'register',
-            payload: {
-                error: error.message
-            }
+        toast.error(error, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
         });
     }
 }
@@ -42,7 +59,15 @@ export const login = ({email,password})=> async (dispatch)=> {
         const res = await axios.post(`/api/auth/login`, {email,password});
         // console.log("123",getCookie("user_token"));
         if(res.data.success) {
-            // localStorage.removeItem("jpm_error");
+            toast.success('Login Successfull!', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
             dispatch({
                 type: 'login',
                 payload: {
@@ -52,21 +77,26 @@ export const login = ({email,password})=> async (dispatch)=> {
         }
 
         if(res.data.error) {
-            // localStorage.setItem("jpm_error",res.data.error);
-            dispatch({
-                type: 'login',
-                payload: {
-                    error: res.data.error
-                }
+            toast.error(res.data.error, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
             });
         }
 
     } catch (error) {
-        dispatch({
-            type: 'login',
-            payload: {
-                error: error.message
-            }
+        toast.error(error, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
         });
     }
 }
@@ -86,7 +116,6 @@ export const profile = (token)=> async (dispatch)=> {
         // setCookies("jpm_profile",res.data.mycookie);
         // console.log(getCookie("jpm_profile"));
         if(res.data.success) {
-            // localStorage.removeItem("jpm_error");
             dispatch({
                 type: 'profile',
                 payload: {
@@ -96,21 +125,26 @@ export const profile = (token)=> async (dispatch)=> {
         }
 
         if(res.data.error) {
-            // localStorage.setItem("jpm_error",res.data.error);
-            dispatch({
-                type: 'profile',
-                payload: {
-                    error: res.data.error
-                }
+            toast.error(res.data.error, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
             });
         }
 
     } catch (error) {
-        dispatch({
-            type: 'profile',
-            payload: {
-                error: error.message
-            }
+        toast.error(error, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
         });
     }
 }
@@ -131,7 +165,15 @@ export const editProfile = ({name,email})=> async (dispatch)=> {
         
         if(res.data.success) {
             localStorage.setItem("jpm_profile",JSON.stringify(res.data.user));
-            localStorage.removeItem("jpm_error");
+            toast.success("Profile updated successfully!", {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
             dispatch({
                 type: 'edit-profile',
                 payload: {
@@ -141,21 +183,26 @@ export const editProfile = ({name,email})=> async (dispatch)=> {
         }
 
         if(res.data.error) {
-            localStorage.setItem("jpm_error",res.data.error);
-            dispatch({
-                type: 'edit-profile',
-                payload: {
-                    error: res.data.error
-                }
+            toast.error(res.data.error, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
             });
         }
 
     } catch (error) {
-        dispatch({
-            type: 'edit-profile',
-            payload: {
-                error: error.message
-            }
+        toast.error(error, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
         });
     }
 }
@@ -166,15 +213,25 @@ export const logout = ()=> async (dispatch)=> {
         if(res.data.success) {
             removeCookies("user_token");
             removeCookies("jpm_profile");
-            removeCookies("jpm_projects");
-            removeCookies("jpm_tasks");
-            removeCookies("jpm_error");
+            toast.info("Logged out successfully!", {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            
+            if(typeof window !== "undefined") {
+                localStorage.removeItem("jpm_tasks");
+                localStorage.removeItem("jpm_projects");
+            }
             dispatch({
                 type: 'logout',
                 payload: {
                     user: null,
                     profile: null,
-                    error: null,
                     isLoading: false,
                     projects: null,
                     project: null,
@@ -184,20 +241,26 @@ export const logout = ()=> async (dispatch)=> {
             });
         }
         if(res.data.error) {
-            dispatch({
-                type: 'logout',
-                payload: {
-                    error: res.data.error
-                }
+            toast.error(res.data.error, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
             });
         }
     }
     catch(error) {
-        dispatch({
-            type: 'logout',
-            payload: {
-                error: error.message
-            }
+        toast.error(error, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
         });
     }
 }
@@ -208,8 +271,9 @@ export const getAllProjects = (token)=> async (dispatch)=> {
         const res = await axios.get(`http://localhost:3000/api/projects/`, {headers: {"user_token": token}});
         // console.log(res.data);
         if(res.data.success) {
-            // localStorage.setItem("jpm_projects",JSON.stringify(res.data.projects));
-            // localStorage.removeItem("jpm_error");
+            if(typeof window !== 'undefined') {
+                localStorage.setItem("jpm_projects",JSON.stringify(res.data.projects));
+            }
             dispatch({
                 type: 'get-projects',
                 payload: {
@@ -219,21 +283,26 @@ export const getAllProjects = (token)=> async (dispatch)=> {
         }
 
         if(res.data.error) {
-            localStorage.setItem("jpm_error",res.data.error);
-            dispatch({
-                type: 'get-projects',
-                payload: {
-                    error: res.data.error
-                }
+            toast.error(res.data.error, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
             });
         }
 
     } catch (error) {
-        dispatch({
-            type: 'get-projects',
-            payload: {
-                error: error.message
-            }
+        toast.error(error, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
         });
     }
 }
@@ -245,7 +314,6 @@ export const getProject = (id,token)=> async (dispatch)=> {
         const res = await axios.get(`http://localhost:3000/api/projects/getproject?project=${id}`, {headers: {"user_token": token}});
         
         if(res.data.success) {
-            // localStorage.removeItem("jpm_error");
             dispatch({
                 type: 'get-project',
                 payload: {
@@ -255,21 +323,26 @@ export const getProject = (id,token)=> async (dispatch)=> {
         }
 
         if(res.data.error) {
-            // localStorage.setItem("jpm_error",res.data.error);
-            dispatch({
-                type: 'get-project',
-                payload: {
-                    error: res.data.error
-                }
+            toast.error(res.data.error, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
             });
         }
 
     } catch (error) {
-        dispatch({
-            type: 'get-project',
-            payload: {
-                error: error.message
-            }
+        toast.error(error, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
         });
     }
 }
@@ -280,8 +353,18 @@ export const addProject = ({title,description})=> async (dispatch)=> {
         const res = await axios.post(`/api/projects/addproject`, {title,description}, {headers: {"user_token": token}});
         
         if(res.data.success) {
-            // localStorage.setItem("jpm_projects",JSON.stringify(res.data.projects));
-            // localStorage.removeItem("jpm_error");
+            if(typeof window !== 'undefined') {
+                localStorage.setItem("jpm_projects",JSON.stringify(res.data.projects));
+            }
+            toast.success("Project added successfully!", {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
             dispatch({
                 type: 'add-project',
                 payload: {
@@ -291,21 +374,26 @@ export const addProject = ({title,description})=> async (dispatch)=> {
         }
 
         if(res.data.error) {
-            // localStorage.setItem("jpm_error",res.data.error);
-            dispatch({
-                type: 'add-project',
-                payload: {
-                    error: res.data.error
-                }
+            toast.error(res.data.error, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
             });
         }
 
     } catch (error) {
-        dispatch({
-            type: 'add-project',
-            payload: {
-                error: error.message
-            }
+        toast.error(error, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
         });
     }
 }
@@ -316,8 +404,18 @@ export const editProject = ({id,title,description,status})=> async (dispatch)=> 
         const res = await axios.put(`/api/projects/editproject?project=${id}`, {title,description,status});
         
         if(res.data.success) {
-            // localStorage.setItem("jpm_projects",JSON.stringify(res.data.projects));
-            // localStorage.removeItem("jpm_error");
+            if(typeof window !== 'undefined') {
+                localStorage.setItem("jpm_projects",JSON.stringify(res.data.projects));
+            }
+            toast.success("Project updated successfully!", {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
             dispatch({
                 type: 'edit-project',
                 payload: {
@@ -327,21 +425,26 @@ export const editProject = ({id,title,description,status})=> async (dispatch)=> 
         }
 
         if(res.data.error) {
-            // localStorage.setItem("jpm_error",res.data.error);
-            dispatch({
-                type: 'edit-project',
-                payload: {
-                    error: res.data.error
-                }
+            toast.error(res.data.error, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
             });
         }
 
     } catch (error) {
-        dispatch({
-            type: 'edit-project',
-            payload: {
-                error: error.message
-            }
+        toast.error(error, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
         });
     }
 }
@@ -352,8 +455,18 @@ export const deleteProject = (id)=> async (dispatch)=> {
         const res = await axios.delete(`/api/projects/deleteproject?project=${id}`);
 
         if(res.data.success) {
-            // localStorage.setItem("jpm_projects",JSON.stringify(res.data.projects));
-            // localStorage.removeItem("jpm_error");
+            if(typeof window !== 'undefined') {
+                localStorage.setItem("jpm_projects",JSON.stringify(res.data.projects));
+            }
+            toast.success("Project deleted successfully!", {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
             dispatch({
                 type: 'delete-project',
                 payload: {
@@ -363,21 +476,26 @@ export const deleteProject = (id)=> async (dispatch)=> {
         }
 
         if(res.data.error) {
-            // localStorage.setItem("jpm_error",res.data.error);
-            dispatch({
-                type: 'delete-project',
-                payload: {
-                    error: res.data.error
-                }
+            toast.error(res.data.error, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
             });
         }
 
     } catch (error) {
-        dispatch({
-            type: 'delete-project',
-            payload: {
-                error: error.message
-            }
+        toast.error(error, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
         });
     }
 }
@@ -391,7 +509,6 @@ export const getAllTasks = (id,token)=> async (dispatch)=> {
             if(typeof window !== 'undefined') {
                 localStorage.setItem("jpm_tasks",JSON.stringify(res.data.tasks));
             }
-            // localStorage.removeItem("jpm_error");
             dispatch({
                 type: 'get-tasks',
                 payload: {
@@ -401,21 +518,26 @@ export const getAllTasks = (id,token)=> async (dispatch)=> {
         }
 
         if(res.data.error) {
-            // localStorage.setItem("jpm_error",res.data.error);
-            dispatch({
-                type: 'get-tasks',
-                payload: {
-                    error: res.data.error
-                }
+            toast.error(res.data.error, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
             });
         }
 
     } catch (error) {
-        dispatch({
-            type: 'get-tasks',
-            payload: {
-                error: error.message
-            }
+        toast.error(error, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
         });
     }
 }
@@ -430,7 +552,6 @@ export const getTask = (id)=> async (dispatch)=> {
         const res = await axios.get(`/api/tasks/gettask?task=${id}`);
         
         if(res.data.success) {
-            // localStorage.removeItem("jpm_error");
             dispatch({
                 type: 'get-task',
                 payload: {
@@ -440,21 +561,26 @@ export const getTask = (id)=> async (dispatch)=> {
         }
 
         if(res.data.error) {
-            // localStorage.setItem("jpm_error",res.data.error);
-            dispatch({
-                type: 'get-task',
-                payload: {
-                    error: res.data.error
-                }
+            toast.error(res.data.error, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
             });
         }
 
     } catch (error) {
-        dispatch({
-            type: 'get-task',
-            payload: {
-                error: error.message
-            }
+        toast.error(error, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
         });
     }
 }
@@ -473,6 +599,15 @@ export const addTask = (id,title)=> async (dispatch)=> {
             if(typeof window !== 'undefined') {
                 localStorage.setItem("jpm_tasks",JSON.stringify(res.data.tasks));
             }
+            toast.success("Task added successfully!", {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
             dispatch({
                 type: 'add-task',
                 payload: {
@@ -483,21 +618,26 @@ export const addTask = (id,title)=> async (dispatch)=> {
         }
 
         if(res.data.error) {
-            // localStorage.setItem("jpm_error",res.data.error);
-            dispatch({
-                type: 'add-task',
-                payload: {
-                    error: res.data.error
-                }
+            toast.error(res.data.error, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
             });
         }
 
     } catch (error) {
-        dispatch({
-            type: 'add-task',
-            payload: {
-                error: error.message
-            }
+        toast.error(error, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
         });
     }
 }
@@ -511,7 +651,15 @@ export const editTask = ({id,title,status})=> async (dispatch)=> {
             if(typeof window !== 'undefined') {
                 localStorage.setItem("jpm_tasks",JSON.stringify(res.data.tasks));
             }
-            // localStorage.removeItem("jpm_error");
+            toast.success("Task updated successfully!", {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
             dispatch({
                 type: 'edit-task',
                 payload: {
@@ -522,21 +670,26 @@ export const editTask = ({id,title,status})=> async (dispatch)=> {
         }
 
         if(res.data.error) {
-            // localStorage.setItem("jpm_error",res.data.error);
-            dispatch({
-                type: 'edit-task',
-                payload: {
-                    error: res.data.error
-                }
+            toast.error(res.data.error, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
             });
         }
 
     } catch (error) {
-        dispatch({
-            type: 'edit-task',
-            payload: {
-                error: error.message
-            }
+        toast.error(error, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
         });
     }
 }
@@ -553,7 +706,15 @@ export const deleteTask = (id)=> async (dispatch)=> {
             if(typeof window !== 'undefined') {
                 localStorage.setItem("jpm_tasks",JSON.stringify(res.data.tasks));
             }
-            // localStorage.removeItem("jpm_error");
+            toast.success("Task deleted successfully!", {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
             dispatch({
                 type: 'delete-project',
                 payload: {
@@ -564,21 +725,26 @@ export const deleteTask = (id)=> async (dispatch)=> {
         }
 
         if(res.data.error) {
-            localStorage.setItem("jpm_error",res.data.error);
-            dispatch({
-                type: 'delete-project',
-                payload: {
-                    error: res.data.error
-                }
+            toast.error(res.data.error, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
             });
         }
 
     } catch (error) {
-        dispatch({
-            type: 'delete-project',
-            payload: {
-                error: error.message
-            }
+        toast.error(error, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
         });
     }
 }

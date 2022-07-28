@@ -1,24 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap');
+
 .project_box {
     min-height: 3rem;
     width: 15rem;
     padding: 1rem 2rem;
-    margin: 1rem 0;
+    margin: 1.5rem 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: center;
     border: 0.1rem solid #010125;
     border-radius: 0.5rem;
+    box-shadow: 0.005rem 0.05rem 0.3rem 0.1rem rgb(128, 128, 128);
     background-color: white;
 }
 
 .project_box h3 {
     width: 100%;
+    font-family: 'Titillium Web', sans-serif;
     word-wrap: break-word;
     cursor: pointer;
 }
 
 .project_box h3:hover {
-    /* color: rgb(3, 96, 96); */
     text-decoration: underline;
 }

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@500&family=Saira&display=swap');
+
 .overlay {
     margin: 0;
     padding: 0;
@@ -12,7 +14,8 @@
 }
 
 .modal {
-    height: 50vh;
+    min-height: 30vh;
+    max-height: 55vh;
     width: 30%;
     padding: 2rem;
     margin-top: 10vw;
@@ -21,9 +24,15 @@
     align-items: center;
     justify-content: center;
     text-align: center;
+    border: none;
+    border-radius: 0.7rem;
     background-color: white;
     z-index: 5;
     opacity: 1;
+}
+
+.modal .task_head {
+    margin-bottom: 1rem;
 }
 
 .modal input, .modal button, .modal select {
@@ -35,12 +44,18 @@
 }
 
 .modal input, .modal select {
+    font-family: 'Saira', sans-serif;
     margin: 0.5rem 0;
     border: 0.1rem solid #010118;
 }
 
 .modal button {
+    font-family: 'Cormorant SC', serif;
     cursor: pointer;
+}
+
+.modal select {
+    line-height: normal;
 }
 
 .modal .add_btn {
@@ -68,5 +83,18 @@
 .modal .delete_btn:hover {
     color: red;
     background-color: white;
+    transition: all 0.2s ease-in-out;
+}
+
+.modal .close_btn {
+    color: white;
+    background-color: rgb(101, 0, 0);
+    border: 0.1rem solid white;
+}
+
+.modal .close_btn:hover {
+    color:  rgb(101, 0, 0);
+    background-color: white;
+    border: 0.1rem solid  rgb(101, 0, 0);
     transition: all 0.2s ease-in-out;
 }

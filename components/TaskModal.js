@@ -43,6 +43,7 @@ const TaskModal = ({id, setShow, tid, title, status}) => {
     return ReactDom.createPortal(
         <div className={styles.overlay}>
             <div className={styles.modal}>
+                {tid ? <h1 className={styles.task_head}>Edit Task</h1> : <h1 className={styles.task_head}>Add Task</h1>}
                 <input type="text" name="title" value={task.title} onChange={onValueChange} placeholder="Task Title" />
                 {tid && <select name="status" id="status" value={task.status} onChange={onValueChange}>
                     <option value="created">created</option>

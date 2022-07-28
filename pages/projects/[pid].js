@@ -133,7 +133,7 @@ const ProjectPage = () => {
                 }}
                 onClick={(e)=> onCardClick(e,t?._id)}
               >
-                <h2 className={styles.task_title}>{t?.title.substring(0,20)}</h2>
+                <h2 className={styles.task_title}>{t?.title.substring(0,22)}</h2>
               </div>
             );
           })}

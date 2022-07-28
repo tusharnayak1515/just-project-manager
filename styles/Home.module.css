@@ -1,6 +1,4 @@
-/* .container {
-  padding: 0 2rem;
-} */
+@import url('https://fonts.googleapis.com/css2?family=Archivo&family=Josefin+Sans:wght@600&display=swap');
 
 .main {
   min-height: 76vh;
@@ -24,21 +22,14 @@
   background-color: rgb(1, 1, 37);
 }
 
-.footer h4 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-  cursor: pointer;
+.footer h3 {
+  font-family: 'Josefin Sans', sans-serif;
 }
 
 .title {
   margin: 0;
-  cursor: pointer;
-}
-
-.title:hover {
-  text-decoration: underline;
+  font-size: 2.5rem;
+  font-family: 'Josefin Sans', sans-serif;
 }
 
 .title,
@@ -47,7 +38,8 @@
 }
 
 .description {
-  margin: 2rem 0 1rem 0;
+  margin: 3rem 0 0.5rem 0;
+  font-family: 'Archivo', sans-serif;
   /* line-height: 1.5; */
   /* font-size: 1.5rem; */
 }

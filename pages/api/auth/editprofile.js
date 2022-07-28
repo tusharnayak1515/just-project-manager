@@ -24,6 +24,13 @@ const handler = validate({ body: schema }, async (req, res)=> {
         return res.json({success, error: "User doesnot exist", status: 404});
       }
 
+      let user1 = await User.findOne({email: email});
+
+      if(user1) {
+        success = false;
+        return res.json({success, error: "Email is already taken!", status: 400});
+      }
+
       user = await User.findByIdAndUpdate(userId, {name: name, email: email}, {new: true})
         .populate("projects", "_id title description tasks status");
 

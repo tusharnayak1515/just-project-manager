@@ -5,7 +5,6 @@ import Project from "../../../models/Project";
 import Task from "../../../models/Task";
 import Joi from "joi";
 import validate from "../../../middlewares/validate";
-import { setCookies } from "cookies-next";
 
 const schema = Joi.object({
   title: Joi.string().min(4).required(),
@@ -38,10 +37,8 @@ const handler = validate({body: schema}, async (req, res)=> {
       const projects = await Project.find({user: userId})
         .populate("tasks", "_id title status project");
 
-      setCookies("jpm_projects", JSON.stringify(projects), {req,res});
-
       success = true;
-      return res.json({ success, user, status: 200 });
+      return res.json({ success, user, projects, status: 200 });
 
     } catch (error) {
       success = false;

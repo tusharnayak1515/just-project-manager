@@ -25,6 +25,7 @@ const Modal = ({setShow, id, title, description, status}) => {
         e.preventDefault();
         dispatch(actionCreators.addProject(project));
         setShow(false);
+        router.push("/");
     }
 
     const onEdit = (e)=> {
@@ -39,11 +40,11 @@ const Modal = ({setShow, id, title, description, status}) => {
             <div className={styles.modal}>
                 <input type="text" name="title" value={project.title} onChange={onValueChange} placeholder="Project Title" />
                 <input type="text" name="description" value={project.description} onChange={onValueChange} placeholder="Project Description" />
-                <select name="status" id="status" value={project.status} onChange={onValueChange}>
+                {id && <select name="status" id="status" value={project.status} onChange={onValueChange}>
                     <option value="created">created</option>
                     <option value="in progress">in progress</option>
                     <option value="completed">completed</option>
-                </select>
+                </select>}
                 <button onClick={id ? onEdit : onAdd} className={styles.add_btn}>{id ? 'Edit' : 'Submit'}</button>
                 <button onClick={onClose} className={styles.close_btn}>Close</button>
             </div>

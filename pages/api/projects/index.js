@@ -3,7 +3,6 @@ import User from "../../../models/User";
 import fetchUser from "../../../middlewares/fetchUser";
 import Project from "../../../models/Project";
 import Task from "../../../models/Task";
-import { setCookies } from "cookies-next";
 
 const handler = async (req, res)=> {
   connectToMongo();
@@ -19,8 +18,6 @@ const handler = async (req, res)=> {
       
       const projects = await Project.find({user: userId})
         .populate("tasks", "_id title status project");
-
-      setCookies("jpm_projects", JSON.stringify(projects), {req, res});
 
       success = true;
       return res.json({ success, projects, status: 200 });
