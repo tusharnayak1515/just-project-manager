@@ -3,6 +3,7 @@ import ReactDom from 'react-dom';
 import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 import { actionCreators } from '../redux';
+import { toast } from 'react-toastify';
 
 import styles from '../styles/modal.module.css';
 
@@ -23,16 +24,68 @@ const Modal = ({setShow, id, title, description, status}) => {
 
     const onAdd = (e)=> {
         e.preventDefault();
-        dispatch(actionCreators.addProject(project));
-        setShow(false);
-        router.push("/");
+        if(project.title.length >= 4 && project.description.length >= 5) {
+            dispatch(actionCreators.addProject(project));
+            setShow(false);
+            router.push("/");
+        }
+        else {
+            if(project.title.length < 4) {
+                toast.warn('Title must be minimum 4 characters long!', {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            }
+            else if(project.description.length < 5) {
+                toast.warn('Description must be minimum 5 characters long!', {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            }
+        }
     }
 
     const onEdit = (e)=> {
         e.preventDefault();
-        dispatch(actionCreators.editProject(project));
-        setShow(false);
-        router.push(`/projects/${id}`);
+        if(project.title.length >= 4 && project.description.length >= 5) {
+            dispatch(actionCreators.editProject(project));
+            setShow(false);
+            router.push(`/projects/${id}`);
+        }
+        else {
+            if(project.title.length < 4) {
+                toast.warn('Title must be minimum 4 characters long!', {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            }
+            else if(project.description.length < 5) {
+                toast.warn('Description must be minimum 5 characters long!', {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            }
+        }
     }
 
     return ReactDom.createPortal(

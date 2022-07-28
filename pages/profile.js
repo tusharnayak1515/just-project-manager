@@ -6,6 +6,7 @@ import { actionCreators } from '../redux';
 import { wrapper } from '../redux/store';
 import Head from 'next/head';
 import { MdEdit } from 'react-icons/md';
+import { toast } from 'react-toastify';
 
 import styles from '../styles/profile.module.css';
 
@@ -28,8 +29,35 @@ const profile = () => {
 
   const onEdit = (e)=> {
     e.preventDefault();
-    dispatch(actionCreators.editProfile(userDetails));
-    setEdit(false);
+    const regex = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/;
+    if(userDetails.name.length >= 4 && regex.test(userDetails.email) === true) {
+      dispatch(actionCreators.editProfile(userDetails));
+      setEdit(false);
+    }
+    else {
+      if(userDetails.name.length < 4 ) {
+        toast.warn('Name must be minimum 4 characters long!', {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
+      else if(userDetails.email.length === 0 || regex.test(userDetails.email) === false) {
+        toast.warn('Enter a valid email!', {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
+    }
   }
 
   const onCancelClick = (e)=> {

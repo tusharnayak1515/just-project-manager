@@ -7,6 +7,7 @@ import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { actionCreators } from '../redux';
 import bannerImg1 from '../public/static/images/banner3.jpg';
 // import bannerImg2 from '../public/static/images/bannerimg.jpg';
+import { toast } from 'react-toastify';
 
 import styles from '../styles/login.module.css';
 
@@ -23,7 +24,34 @@ const Login = () => {
 
   const onLogin = (e)=> {
     e.preventDefault();
-    dispatch(actionCreators.login(userDetails));
+    const emailRegex = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/;
+    if(emailRegex.test(userDetails.email) === true && userDetails.password.length > 0) {
+      dispatch(actionCreators.login(userDetails));
+    }
+    else {
+      if(emailRegex.test(userDetails.email) === false) {
+        toast.warn('Enter a valid email!', {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+      });
+      }
+      else {
+        toast.warn('Password cannot be empty!', {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+      });
+      }
+    }
   }
 
   useEffect(() => {

@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import ReactDom from 'react-dom';
 import { useDispatch } from 'react-redux';
 import { actionCreators } from '../redux';
+import { toast } from 'react-toastify';
 
 import styles from '../styles/modal.module.css';
 
@@ -23,14 +24,40 @@ const TaskModal = ({id, setShow, tid, title, status}) => {
 
     const onAdd = (e)=> {
         e.preventDefault();
-        dispatch(actionCreators.addTask(id,task.title));
-        setShow(false);
+        if(task.title.length >= 4) {
+            dispatch(actionCreators.addTask(id,task.title));
+            setShow(false);
+        }
+        else {
+            toast.warn('Title must be minimum 4 characters long!', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        }
     }
 
     const onEdit = (e)=> {
         e.preventDefault();
-        dispatch(actionCreators.editTask(task));
-        setShow(false);
+        if(task.title.length >= 4) {
+            dispatch(actionCreators.editTask(task));
+            setShow(false);
+        }
+        else {
+            toast.warn('Title must be minimum 4 characters long!', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        }
     }
 
     const onTaskDelete = (e)=> {

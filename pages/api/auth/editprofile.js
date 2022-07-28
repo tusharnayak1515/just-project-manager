@@ -27,8 +27,10 @@ const handler = validate({ body: schema }, async (req, res)=> {
       let user1 = await User.findOne({email: email});
 
       if(user1) {
-        success = false;
-        return res.json({success, error: "Email is already taken!", status: 400});
+        if(user1._id.toString() !== userId) {
+          success = false;
+          return res.json({success, error: "Email is already taken!", status: 400});
+        }
       }
 
       user = await User.findByIdAndUpdate(userId, {name: name, email: email}, {new: true})

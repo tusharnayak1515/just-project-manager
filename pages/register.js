@@ -7,6 +7,7 @@ import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { actionCreators } from '../redux';
 // import bannerImg1 from '../public/static/images/banner3.jpg';
 import bannerImg2 from '../public/static/images/bannerimg.jpg';
+import { toast } from 'react-toastify';
 
 import styles from '../styles/register.module.css';
 
@@ -23,7 +24,46 @@ const Register = () => {
 
   const onRegister = (e)=> {
     e.preventDefault();
-    dispatch(actionCreators.register(userDetails));
+    const emailRegex = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/;
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/;
+    if(userDetails.name.length >= 4 && emailRegex.test(userDetails.email) === true && passwordRegex.test(userDetails.password)) {
+        dispatch(actionCreators.register(userDetails));
+    }
+    else {
+        if(userDetails.name.length < 4) {
+            toast.warn('Name must be minimum 4 characters long!', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        }
+        else if(userDetails.email.length === 0 || emailRegex.test(userDetails.email) === false) {
+            toast.warn('Enter a valid Email!', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        }
+        else {
+            toast.warn('Password must be minimum 8 characters long and a combination of uppercase,lowercase,spacial characters and numbers!', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        }
+    }
   }
 
   useEffect(() => {
