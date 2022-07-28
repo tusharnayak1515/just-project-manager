@@ -213,7 +213,7 @@ export const logout = ()=> async (dispatch)=> {
         if(res.data.success) {
             removeCookies("user_token");
             removeCookies("jpm_profile");
-            toast.info("Logged out successfully!", {
+            toast.success("Logged out successfully!", {
                 position: "top-right",
                 autoClose: 3000,
                 hideProgressBar: false,
