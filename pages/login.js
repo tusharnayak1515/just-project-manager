@@ -1,16 +1,16 @@
+import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { actionCreators } from '../redux';
 import bannerImg1 from '../public/static/images/banner3.jpg';
 // import bannerImg2 from '../public/static/images/bannerimg.jpg';
 import { toast } from 'react-toastify';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 import styles from '../styles/login.module.css';
-import LoadingSpinner from '../components/LoadingSpinner';
 
 const Login = () => {
   const router = useRouter();
@@ -56,12 +56,14 @@ const Login = () => {
   }
 
   useEffect(() => {
+    // console.log(router.isReady);
     if(user) {
-      if(router.isReady) {
-        router.replace('/');
-      }
+      router.replace('/');
+      // if(router.isReady) {
+      //   router.replace('/');
+      // }
     }
-  }, [user, router.isReady]);
+  }, [user]);
 
   if(isLoading) {
     return <LoadingSpinner />

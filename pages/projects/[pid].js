@@ -15,8 +15,8 @@ const ProjectPage = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.userReducer, shallowEqual);
-  const { project, project_error } = useSelector(state => state.projectReducer, shallowEqual);
-  const { tasks, task, isLoading, task_error } = useSelector((state) => state.taskReducer, shallowEqual);
+  const { project } = useSelector(state => state.projectReducer, shallowEqual);
+  const { tasks, task, isLoading } = useSelector((state) => state.taskReducer, shallowEqual);
   const [projectShow, setProjectShow] = useState(false);
   const [show, setShow] = useState(false);
   const [taskShow, setTaskShow] = useState(false);
@@ -64,14 +64,6 @@ const ProjectPage = () => {
       dispatch(actionCreators.resetTask());
     }
   }, [user, router.isReady]);
-
-  useEffect(() => {
-    if (project_error === "Invalid projectId" || project_error === "Project doesnot exist" || task_error === "Invalid projectId" || task_error === "Project doesnot exist") {
-      if (router.isReady) {
-        router.replace("/invalid");
-      }
-    }
-  }, [router, project_error, task_error]);
 
   return (
     <div className={styles.projectpage}>
@@ -169,6 +161,11 @@ export const getServerSideProps = wrapper.getServerSideProps(
     await store.dispatch(
       actionCreators.getProject(params.pid, cookieObj.user_token)
     );
+    if(!store.getState().projectReducer.project) {
+      return {
+        notFound: true
+      }
+    }
     await store.dispatch(
       actionCreators.getAllTasks(params.pid, cookieObj.user_token)
     );

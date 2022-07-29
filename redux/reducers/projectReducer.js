@@ -11,8 +11,7 @@ if(typeof window !== 'undefined') {
 const initState = {
     projects: isProjects,
     project: null,
-    isLoading: false,
-    project_error: null
+    isLoading: false
 }
 
 const projectReducer = (state = initState, action) => {
@@ -41,7 +40,6 @@ const projectReducer = (state = initState, action) => {
         if(error) {
             return {
                 ...state,
-                project_error: error,
                 isLoading: false
             }
         }

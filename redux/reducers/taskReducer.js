@@ -12,8 +12,7 @@ if(typeof window !== 'undefined') {
 const initState = {
     tasks: isTasks,
     task: null,
-    isLoading: false,
-    task_error: null
+    isLoading: false
 }
 
 const taskReducer = (state = initState, action) => {
@@ -28,7 +27,6 @@ const taskReducer = (state = initState, action) => {
         if(error) {
             return {
                 ...state,
-                task_error: error,
                 isLoading: false
             }
         }
@@ -43,7 +41,6 @@ const taskReducer = (state = initState, action) => {
         if(error) {
             return {
                 ...state,
-                task_error: error,
                 isLoading: false
             }
         }

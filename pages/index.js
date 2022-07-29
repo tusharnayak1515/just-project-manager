@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, shallowEqual ,useDispatch } from 'react-redux';
 import { actionCreators } from '../redux';
 import { wrapper } from '../redux/store';

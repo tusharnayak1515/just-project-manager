@@ -3,8 +3,10 @@ import Link from 'next/link';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { actionCreators } from '../redux';
 import { useRouter } from 'next/router';
+import ReactAwesomeClock from 'react-awesome-clock';
 
 import styles from '../styles/navbar.module.css';
+import Clock from './Clock';
 
 const Navbar = ({setShow}) => {
   const router = useRouter();
@@ -31,7 +33,9 @@ const Navbar = ({setShow}) => {
         </div>
       </div>
       <div className={styles.middle}>
-        <input type="text" placeholder='Search your projects' />
+        {/* <input type="text" placeholder='Search your projects' /> */}
+        {/* <ReactAwesomeClock style={{ color: "white", fontSize: 20, textShadow: "0 0 10px grey", fontFamily: "aerial" }} clockSeparator=" " /> */}
+        <Clock />
       </div>
       <div className={styles.rightSide}>
         {router.pathname === '/' && <h1 onClick={(e)=> {e.preventDefault();setShow(true)}}>+</h1>}

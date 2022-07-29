@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
+
+.clock {
+    width: 25rem;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: orange; */
+}
+
+.clock h1 {
+    font-size: 1.8rem;
+    font-family: 'Mochiy Pop One', sans-serif;
+}
