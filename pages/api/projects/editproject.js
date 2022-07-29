@@ -44,7 +44,7 @@ const handler = validate({body: schema},async (req, res)=> {
         .populate("tasks", "_id title status project");
 
       success = true;
-      return res.json({ success, projects, status: 200 });
+      return res.json({ success, projects, project, status: 200 });
 
     } catch (error) {
       success = false;

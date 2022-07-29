@@ -16,13 +16,14 @@ export default function Home() {
 
   useEffect(()=> {
     if(!user) {
-      router.push('/login');
+      if(router.isReady) {
+        router.replace('/login');
+      }
     }
     else {
-      dispatch(actionCreators.profile());
       dispatch(actionCreators.getAllProjects());
     }
-  }, [user]);
+  }, [user, router.isReady, dispatch]);
   
   return (
     <div className={styles.container}>

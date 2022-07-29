@@ -64,7 +64,6 @@ const TaskModal = ({id, setShow, tid, title, status}) => {
         e.preventDefault();
         dispatch(actionCreators.deleteTask(tid));
         setShow(false);
-        router.push(`/projects/${id}`);
     }
 
     return ReactDom.createPortal(

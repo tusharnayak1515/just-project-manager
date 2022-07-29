@@ -1,0 +1,9 @@
+.invalid {
+    min-height: 100vh;
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background: url("../public/static/images/invalid6.jpg") center center no-repeat;
+    background-size: cover; */
+}

@@ -11,7 +11,8 @@ if(typeof window !== 'undefined') {
 const initState = {
     projects: isProjects,
     project: null,
-    isLoading: false
+    isLoading: false,
+    project_error: null
 }
 
 const projectReducer = (state = initState, action) => {
@@ -22,7 +23,13 @@ const projectReducer = (state = initState, action) => {
         }
     }
     else if (action.type === 'get-projects') {
-        const { projects } = action.payload;
+        const { projects, error } = action.payload;
+        if(error) {
+            return {
+                ...state,
+                isLoading: false
+            }
+        }
         return {
             ...state,
             projects: projects,
@@ -30,7 +37,14 @@ const projectReducer = (state = initState, action) => {
         }
     }
     else if (action.type === 'get-project') {
-        const { project } = action.payload;
+        const { project, error } = action.payload;
+        if(error) {
+            return {
+                ...state,
+                project_error: error,
+                isLoading: false
+            }
+        }
         return {
             ...state,
             project: project,
@@ -38,7 +52,13 @@ const projectReducer = (state = initState, action) => {
         }
     }
     else if (action.type === 'add-project') {
-        const { projects } = action.payload;
+        const { projects, error } = action.payload;
+        if(error) {
+            return {
+                ...state,
+                isLoading: false
+            }
+        }
         return {
             ...state,
             projects: projects,
@@ -46,23 +66,43 @@ const projectReducer = (state = initState, action) => {
         }
     }
     else if (action.type === 'edit-project') {
-        const { projects } = action.payload;
+        const { projects, project, error } = action.payload;
+        if(error) {
+            return {
+                ...state,
+                isLoading: false
+            }
+        }
         return {
             ...state,
             projects: projects,
+            project: project,
             isLoading: false
         }
     }
     else if (action.type === 'delete-project') {
-        const { projects } = action.payload;
+        const { projects, error } = action.payload;
+        if(error) {
+            return {
+                ...state,
+                isLoading: false
+            }
+        }
         return {
             ...state,
             projects: projects,
+            project: null,
             isLoading: false
         }
     }
     else if (action.type === 'add-task') {
-        const { project } = action.payload;
+        const { project, error } = action.payload;
+        if(error) {
+            return {
+                ...state,
+                isLoading: false
+            }
+        }
         return {
             ...state,
             project: project,
@@ -70,7 +110,13 @@ const projectReducer = (state = initState, action) => {
         }
     }
     else if (action.type === 'edit-task') {
-        const { project } = action.payload;
+        const { project, error } = action.payload;
+        if(error) {
+            return {
+                ...state,
+                isLoading: false
+            }
+        }
         return {
             ...state,
             project: project,
@@ -78,7 +124,13 @@ const projectReducer = (state = initState, action) => {
         }
     }
     else if (action.type === 'delete-task') {
-        const { project } = action.payload;
+        const { project, error } = action.payload;
+        if(error) {
+            return {
+                ...state,
+                isLoading: false
+            }
+        }
         return {
             ...state,
             project: project,
@@ -86,7 +138,13 @@ const projectReducer = (state = initState, action) => {
         }
     }
     else if (action.type === 'logout') {
-        const { projects, project } = action.payload;
+        const { projects, project, error } = action.payload;
+        if(error) {
+            return {
+                ...state,
+                isLoading: false
+            }
+        }
         return {
             ...state,
             projects: projects,

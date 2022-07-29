@@ -12,7 +12,8 @@ if(typeof window !== 'undefined') {
 const initState = {
     tasks: isTasks,
     task: null,
-    isLoading: false
+    isLoading: false,
+    task_error: null
 }
 
 const taskReducer = (state = initState, action) => {
@@ -23,7 +24,14 @@ const taskReducer = (state = initState, action) => {
         }
     }
     else if (action.type === 'get-tasks') {
-        const { tasks } = action.payload;
+        const { tasks, error } = action.payload;
+        if(error) {
+            return {
+                ...state,
+                task_error: error,
+                isLoading: false
+            }
+        }
         return {
             ...state,
             tasks: tasks,
@@ -31,7 +39,14 @@ const taskReducer = (state = initState, action) => {
         }
     }
     else if (action.type === 'get-task') {
-        const { task } = action.payload;
+        const { task, error } = action.payload;
+        if(error) {
+            return {
+                ...state,
+                task_error: error,
+                isLoading: false
+            }
+        }
         return {
             ...state,
             task: task,
@@ -45,7 +60,13 @@ const taskReducer = (state = initState, action) => {
         }
     }
     else if (action.type === 'add-task') {
-        const { tasks } = action.payload;
+        const { tasks, error } = action.payload;
+        if(error) {
+            return {
+                ...state,
+                isLoading: false
+            }
+        }
         return {
             ...state,
             tasks: tasks,
@@ -53,7 +74,13 @@ const taskReducer = (state = initState, action) => {
         }
     }
     else if (action.type === 'edit-task') {
-        const { tasks } = action.payload;
+        const { tasks, error } = action.payload;
+        if(error) {
+            return {
+                ...state,
+                isLoading: false
+            }
+        }
         return {
             ...state,
             tasks: tasks,
@@ -61,7 +88,13 @@ const taskReducer = (state = initState, action) => {
         }
     }
     else if (action.type === 'delete-task') {
-        const { tasks } = action.payload;
+        const { tasks, error } = action.payload;
+        if(error) {
+            return {
+                ...state,
+                isLoading: false
+            }
+        }
         return {
             ...state,
             tasks: tasks,
@@ -69,7 +102,13 @@ const taskReducer = (state = initState, action) => {
         }
     }
     else if (action.type === 'logout') {
-        const { tasks, task } = action.payload;
+        const { tasks, task, error } = action.payload;
+        if(error) {
+            return {
+                ...state,
+                isLoading: false
+            }
+        }
         return {
             ...state,
             tasks: tasks,

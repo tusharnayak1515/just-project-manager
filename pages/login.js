@@ -10,12 +10,13 @@ import bannerImg1 from '../public/static/images/banner3.jpg';
 import { toast } from 'react-toastify';
 
 import styles from '../styles/login.module.css';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 const Login = () => {
   const router = useRouter();
   const [userDetails, setUserDetails] = useState({email: "", password: ""});
   const dispatch = useDispatch();
-  const {user} = useSelector(state=> state.userReducer,shallowEqual);
+  const {user, isLoading} = useSelector(state=> state.userReducer,shallowEqual);
 
   const onValueChange = (e)=> {
     e.preventDefault();
@@ -56,9 +57,15 @@ const Login = () => {
 
   useEffect(() => {
     if(user) {
-        router.push('/');
+      if(router.isReady) {
+        router.replace('/');
+      }
     }
-  }, [user]);
+  }, [user, router.isReady]);
+
+  if(isLoading) {
+    return <LoadingSpinner />
+  }
 
   return (
     <div className={styles.login}>

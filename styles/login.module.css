@@ -63,9 +63,15 @@
     padding: 0.7rem 2rem;
     margin-bottom: 2rem;
     color: white;
-    border: none;
+    border: 0.1rem solid white;
     cursor: pointer;
     background-color: #3521b5;
+}
+
+.login .leftDiv .left_wrapper .inputDiv button:hover {
+    color: #3521b5;
+    border: 0.1rem solid #3521b5;
+    background-color: white;
 }
 
 .login .leftDiv .left_wrapper h3 {

@@ -10,12 +10,13 @@ import bannerImg2 from '../public/static/images/bannerimg.jpg';
 import { toast } from 'react-toastify';
 
 import styles from '../styles/register.module.css';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 const Register = () => {
   const router = useRouter();
   const [userDetails, setUserDetails] = useState({name: "", email: "", password: ""});
   const dispatch = useDispatch();
-  const {user} = useSelector(state=> state.userReducer,shallowEqual);
+  const {user, isLoading} = useSelector(state=> state.userReducer,shallowEqual);
 
   const onValueChange = (e)=> {
     e.preventDefault();
@@ -71,7 +72,10 @@ const Register = () => {
         router.push('/');
     }
   }, [user]);
-  
+
+  if(isLoading) {
+    return <LoadingSpinner />
+  }
 
   return (
     <div className={styles.register}>

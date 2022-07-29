@@ -1,21 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
-import { wrapper } from '../redux/store';
 import { actionCreators } from '../redux';
 import { useRouter } from 'next/router';
 
 import styles from '../styles/navbar.module.css';
-import Modal from './Modal';
 
 const Navbar = ({setShow}) => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const {profile} = useSelector(state=> state.userReducer,shallowEqual);
+  const {user} = useSelector(state=> state.userReducer,shallowEqual);
 
   const onLogout = (e)=> {
     e.preventDefault();
     dispatch(actionCreators.logout());
+  }
+
+  if(!user) {
+    return null;
   }
 
   return (
@@ -32,7 +34,7 @@ const Navbar = ({setShow}) => {
         <input type="text" placeholder='Search your projects' />
       </div>
       <div className={styles.rightSide}>
-        <h1 onClick={(e)=> {e.preventDefault();setShow(true)}}>+</h1>
+        {router.pathname === '/' && <h1 onClick={(e)=> {e.preventDefault();setShow(true)}}>+</h1>}
         <Link href='/profile'><h3 className={router.pathname === '/profile' ? styles.activelink: ''}>Profile</h3></Link>
         <h3 onClick={onLogout}><a>Logout</a></h3>
       </div>

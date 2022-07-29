@@ -4,15 +4,22 @@ import { getCookie, removeCookies } from 'cookies-next';
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-// toast.configure();
-
 export const register = ({name,email,password})=> async (dispatch)=> {
+    dispatch({
+        type: "user-loading"
+    });
+
     try {
         const res = await axios.post(`/api/auth/register`, {name,email,password});
         
         if(res.data.success) {
-            // console.log();
-            toast.success('Registration Successfull!', {
+            dispatch({
+                type: 'register',
+                payload: {
+                    user: getCookie("user_token")
+                }
+            });
+            toast.success('Registration Successful!', {
                 position: "top-right",
                 autoClose: 3000,
                 hideProgressBar: false,
@@ -21,15 +28,15 @@ export const register = ({name,email,password})=> async (dispatch)=> {
                 draggable: true,
                 progress: undefined,
             });
-            dispatch({
-                type: 'register',
-                payload: {
-                    user: getCookie("user_token")
-                }
-            });
         }
 
         if(res.data.error) {
+            dispatch({
+                type: "register",
+                payload: {
+                    error: res.data.error
+                }
+            });
             toast.error(res.data.error, {
                 position: "top-right",
                 autoClose: 3000,
@@ -42,6 +49,12 @@ export const register = ({name,email,password})=> async (dispatch)=> {
         }
 
     } catch (error) {
+        dispatch({
+            type: "register",
+            payload: {
+                error: error
+            }
+        });
         toast.error(error, {
             position: "top-right",
             autoClose: 3000,
@@ -55,11 +68,21 @@ export const register = ({name,email,password})=> async (dispatch)=> {
 }
 
 export const login = ({email,password})=> async (dispatch)=> {
+    dispatch({
+        type: "user-loading"
+    });
+
     try {
         const res = await axios.post(`/api/auth/login`, {email,password});
         // console.log("123",getCookie("user_token"));
         if(res.data.success) {
-            toast.success('Login Successfull!', {
+            dispatch({
+                type: 'login',
+                payload: {
+                    user: getCookie("user_token")
+                }
+            });
+            toast.success('Login Successful!', {
                 position: "top-right",
                 autoClose: 3000,
                 hideProgressBar: false,
@@ -68,15 +91,15 @@ export const login = ({email,password})=> async (dispatch)=> {
                 draggable: true,
                 progress: undefined,
             });
-            dispatch({
-                type: 'login',
-                payload: {
-                    user: getCookie("user_token")
-                }
-            });
         }
 
         if(res.data.error) {
+            dispatch({
+                type: "login",
+                payload: {
+                    error: res.data.error
+                }
+            });
             toast.error(res.data.error, {
                 position: "top-right",
                 autoClose: 3000,
@@ -89,6 +112,12 @@ export const login = ({email,password})=> async (dispatch)=> {
         }
 
     } catch (error) {
+        dispatch({
+            type: "login",
+            payload: {
+                error: error
+            }
+        });
         toast.error(error, {
             position: "top-right",
             autoClose: 3000,
@@ -125,6 +154,12 @@ export const profile = (token)=> async (dispatch)=> {
         }
 
         if(res.data.error) {
+            dispatch({
+                type: "profile",
+                payload: {
+                    error: res.data.error
+                }
+            });
             toast.error(res.data.error, {
                 position: "top-right",
                 autoClose: 3000,
@@ -137,6 +172,12 @@ export const profile = (token)=> async (dispatch)=> {
         }
 
     } catch (error) {
+        dispatch({
+            type: "profile",
+            payload: {
+                error: error
+            }
+        });
         toast.error(error, {
             position: "top-right",
             autoClose: 3000,
@@ -164,7 +205,12 @@ export const editProfile = ({name,email})=> async (dispatch)=> {
         const res = await axios.put(`/api/auth/editprofile`, {name,email}, {headers: {"user_token": token}});
         
         if(res.data.success) {
-            localStorage.setItem("jpm_profile",JSON.stringify(res.data.user));
+            dispatch({
+                type: 'edit-profile',
+                payload: {
+                    profile: res.data.user
+                }
+            });
             toast.success("Profile updated successfully!", {
                 position: "top-right",
                 autoClose: 3000,
@@ -174,15 +220,15 @@ export const editProfile = ({name,email})=> async (dispatch)=> {
                 draggable: true,
                 progress: undefined,
             });
-            dispatch({
-                type: 'edit-profile',
-                payload: {
-                    profile: res.data.user
-                }
-            });
         }
 
         if(res.data.error) {
+            dispatch({
+                type: "edit-profile",
+                payload: {
+                    error: res.data.error
+                }
+            });
             toast.error(res.data.error, {
                 position: "top-right",
                 autoClose: 3000,
@@ -195,6 +241,12 @@ export const editProfile = ({name,email})=> async (dispatch)=> {
         }
 
     } catch (error) {
+        dispatch({
+            type: "edit-profile",
+            payload: {
+                error: error
+            }
+        });
         toast.error(error, {
             position: "top-right",
             autoClose: 3000,
@@ -212,17 +264,7 @@ export const logout = ()=> async (dispatch)=> {
         const res = await axios.get('/api/auth/logout');
         if(res.data.success) {
             removeCookies("user_token");
-            removeCookies("jpm_profile");
-            toast.success("Logged out successfully!", {
-                position: "top-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            });
-            
+            removeCookies("jpm_profile");            
             if(typeof window !== "undefined") {
                 localStorage.removeItem("jpm_tasks");
                 localStorage.removeItem("jpm_projects");
@@ -239,8 +281,23 @@ export const logout = ()=> async (dispatch)=> {
                     task: null
                 }
             });
+            toast.success("Logged out successfully!", {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
         }
         if(res.data.error) {
+            dispatch({
+                type: "logout",
+                payload: {
+                    error: res.data.error
+                }
+            });
             toast.error(res.data.error, {
                 position: "top-right",
                 autoClose: 3000,
@@ -253,6 +310,12 @@ export const logout = ()=> async (dispatch)=> {
         }
     }
     catch(error) {
+        dispatch({
+            type: "logout",
+            payload: {
+                error: error
+            }
+        });
         toast.error(error, {
             position: "top-right",
             autoClose: 3000,
@@ -283,6 +346,12 @@ export const getAllProjects = (token)=> async (dispatch)=> {
         }
 
         if(res.data.error) {
+            dispatch({
+                type: "get-projects",
+                payload: {
+                    error: res.data.error
+                }
+            });
             toast.error(res.data.error, {
                 position: "top-right",
                 autoClose: 3000,
@@ -295,6 +364,12 @@ export const getAllProjects = (token)=> async (dispatch)=> {
         }
 
     } catch (error) {
+        dispatch({
+            type: "get-projects",
+            payload: {
+                error: error
+            }
+        });
         toast.error(error, {
             position: "top-right",
             autoClose: 3000,
@@ -323,6 +398,12 @@ export const getProject = (id,token)=> async (dispatch)=> {
         }
 
         if(res.data.error) {
+            dispatch({
+                type: "get-project",
+                payload: {
+                    error: res.data.error
+                }
+            });
             toast.error(res.data.error, {
                 position: "top-right",
                 autoClose: 3000,
@@ -335,6 +416,12 @@ export const getProject = (id,token)=> async (dispatch)=> {
         }
 
     } catch (error) {
+        dispatch({
+            type: "get-project",
+            payload: {
+                error: error
+            }
+        });
         toast.error(error, {
             position: "top-right",
             autoClose: 3000,
@@ -356,6 +443,12 @@ export const addProject = ({title,description})=> async (dispatch)=> {
             if(typeof window !== 'undefined') {
                 localStorage.setItem("jpm_projects",JSON.stringify(res.data.projects));
             }
+            dispatch({
+                type: 'add-project',
+                payload: {
+                    projects: res.data.projects
+                }
+            });
             toast.success("Project added successfully!", {
                 position: "top-right",
                 autoClose: 3000,
@@ -365,15 +458,15 @@ export const addProject = ({title,description})=> async (dispatch)=> {
                 draggable: true,
                 progress: undefined,
             });
-            dispatch({
-                type: 'add-project',
-                payload: {
-                    projects: JSON.parse(getCookie("jpm_projects"))
-                }
-            });
         }
 
         if(res.data.error) {
+            dispatch({
+                type: "add-project",
+                payload: {
+                    error: res.data.error
+                }
+            });
             toast.error(res.data.error, {
                 position: "top-right",
                 autoClose: 3000,
@@ -386,6 +479,12 @@ export const addProject = ({title,description})=> async (dispatch)=> {
         }
 
     } catch (error) {
+        dispatch({
+            type: "get-project",
+            payload: {
+                error: error
+            }
+        });
         toast.error(error, {
             position: "top-right",
             autoClose: 3000,
@@ -407,6 +506,13 @@ export const editProject = ({id,title,description,status})=> async (dispatch)=> 
             if(typeof window !== 'undefined') {
                 localStorage.setItem("jpm_projects",JSON.stringify(res.data.projects));
             }
+            dispatch({
+                type: 'edit-project',
+                payload: {
+                    projects: res.data.projects,
+                    project: res.data.project
+                }
+            });
             toast.success("Project updated successfully!", {
                 position: "top-right",
                 autoClose: 3000,
@@ -416,15 +522,15 @@ export const editProject = ({id,title,description,status})=> async (dispatch)=> 
                 draggable: true,
                 progress: undefined,
             });
-            dispatch({
-                type: 'edit-project',
-                payload: {
-                    projects: JSON.parse(getCookie("jpm_projects"))
-                }
-            });
         }
 
         if(res.data.error) {
+            dispatch({
+                type: "edit-project",
+                payload: {
+                    error: res.data.error
+                }
+            });
             toast.error(res.data.error, {
                 position: "top-right",
                 autoClose: 3000,
@@ -437,6 +543,12 @@ export const editProject = ({id,title,description,status})=> async (dispatch)=> 
         }
 
     } catch (error) {
+        dispatch({
+            type: "edit-project",
+            payload: {
+                error: error
+            }
+        });
         toast.error(error, {
             position: "top-right",
             autoClose: 3000,
@@ -458,6 +570,12 @@ export const deleteProject = (id)=> async (dispatch)=> {
             if(typeof window !== 'undefined') {
                 localStorage.setItem("jpm_projects",JSON.stringify(res.data.projects));
             }
+            dispatch({
+                type: 'delete-project',
+                payload: {
+                    projects: res.data.projects
+                }
+            });
             toast.success("Project deleted successfully!", {
                 position: "top-right",
                 autoClose: 3000,
@@ -467,15 +585,15 @@ export const deleteProject = (id)=> async (dispatch)=> {
                 draggable: true,
                 progress: undefined,
             });
-            dispatch({
-                type: 'delete-project',
-                payload: {
-                    projects: JSON.parse(getCookie("jpm_projects"))
-                }
-            });
         }
 
         if(res.data.error) {
+            dispatch({
+                type: "delete-project",
+                payload: {
+                    error: res.data.error
+                }
+            });
             toast.error(res.data.error, {
                 position: "top-right",
                 autoClose: 3000,
@@ -488,6 +606,12 @@ export const deleteProject = (id)=> async (dispatch)=> {
         }
 
     } catch (error) {
+        dispatch({
+            type: "delete-project",
+            payload: {
+                error: error
+            }
+        });
         toast.error(error, {
             position: "top-right",
             autoClose: 3000,
@@ -518,6 +642,12 @@ export const getAllTasks = (id,token)=> async (dispatch)=> {
         }
 
         if(res.data.error) {
+            dispatch({
+                type: "get-tasks",
+                payload: {
+                    error: res.data.error
+                }
+            });
             toast.error(res.data.error, {
                 position: "top-right",
                 autoClose: 3000,
@@ -530,6 +660,12 @@ export const getAllTasks = (id,token)=> async (dispatch)=> {
         }
 
     } catch (error) {
+        dispatch({
+            type: "get-tasks",
+            payload: {
+                error: error
+            }
+        });
         toast.error(error, {
             position: "top-right",
             autoClose: 3000,
@@ -561,6 +697,12 @@ export const getTask = (id)=> async (dispatch)=> {
         }
 
         if(res.data.error) {
+            dispatch({
+                type: "get-task",
+                payload: {
+                    error: res.data.error
+                }
+            });
             toast.error(res.data.error, {
                 position: "top-right",
                 autoClose: 3000,
@@ -573,6 +715,12 @@ export const getTask = (id)=> async (dispatch)=> {
         }
 
     } catch (error) {
+        dispatch({
+            type: "get-task",
+            payload: {
+                error: error
+            }
+        });
         toast.error(error, {
             position: "top-right",
             autoClose: 3000,
@@ -599,6 +747,13 @@ export const addTask = (id,title)=> async (dispatch)=> {
             if(typeof window !== 'undefined') {
                 localStorage.setItem("jpm_tasks",JSON.stringify(res.data.tasks));
             }
+            dispatch({
+                type: 'add-task',
+                payload: {
+                    project: res.data.project,
+                    tasks: res.data.tasks
+                }
+            });
             toast.success("Task added successfully!", {
                 position: "top-right",
                 autoClose: 3000,
@@ -608,16 +763,15 @@ export const addTask = (id,title)=> async (dispatch)=> {
                 draggable: true,
                 progress: undefined,
             });
-            dispatch({
-                type: 'add-task',
-                payload: {
-                    project: res.data.project,
-                    tasks: res.data.tasks
-                }
-            });
         }
 
         if(res.data.error) {
+            dispatch({
+                type: "add-task",
+                payload: {
+                    error: res.data.error
+                }
+            });
             toast.error(res.data.error, {
                 position: "top-right",
                 autoClose: 3000,
@@ -630,6 +784,12 @@ export const addTask = (id,title)=> async (dispatch)=> {
         }
 
     } catch (error) {
+        dispatch({
+            type: "add-task",
+            payload: {
+                error: error
+            }
+        });
         toast.error(error, {
             position: "top-right",
             autoClose: 3000,
@@ -651,6 +811,13 @@ export const editTask = ({id,title,status})=> async (dispatch)=> {
             if(typeof window !== 'undefined') {
                 localStorage.setItem("jpm_tasks",JSON.stringify(res.data.tasks));
             }
+            dispatch({
+                type: 'edit-task',
+                payload: {
+                    project: res.data.project,
+                    tasks: res.data.tasks
+                }
+            });
             toast.success("Task updated successfully!", {
                 position: "top-right",
                 autoClose: 3000,
@@ -660,16 +827,15 @@ export const editTask = ({id,title,status})=> async (dispatch)=> {
                 draggable: true,
                 progress: undefined,
             });
-            dispatch({
-                type: 'edit-task',
-                payload: {
-                    project: res.data.project,
-                    tasks: res.data.tasks
-                }
-            });
         }
 
         if(res.data.error) {
+            dispatch({
+                type: "edit-task",
+                payload: {
+                    error: res.data.error
+                }
+            });
             toast.error(res.data.error, {
                 position: "top-right",
                 autoClose: 3000,
@@ -682,6 +848,12 @@ export const editTask = ({id,title,status})=> async (dispatch)=> {
         }
 
     } catch (error) {
+        dispatch({
+            type: "edit-task",
+            payload: {
+                error: error
+            }
+        });
         toast.error(error, {
             position: "top-right",
             autoClose: 3000,
@@ -706,6 +878,13 @@ export const deleteTask = (id)=> async (dispatch)=> {
             if(typeof window !== 'undefined') {
                 localStorage.setItem("jpm_tasks",JSON.stringify(res.data.tasks));
             }
+            dispatch({
+                type: 'delete-task',
+                payload: {
+                    project: res.data.project,
+                    tasks: res.data.tasks
+                }
+            });
             toast.success("Task deleted successfully!", {
                 position: "top-right",
                 autoClose: 3000,
@@ -715,16 +894,15 @@ export const deleteTask = (id)=> async (dispatch)=> {
                 draggable: true,
                 progress: undefined,
             });
-            dispatch({
-                type: 'delete-project',
-                payload: {
-                    project: res.data.project,
-                    tasks: res.data.tasks
-                }
-            });
         }
 
         if(res.data.error) {
+            dispatch({
+                type: "delete-task",
+                payload: {
+                    error: res.data.error
+                }
+            });
             toast.error(res.data.error, {
                 position: "top-right",
                 autoClose: 3000,
@@ -737,6 +915,12 @@ export const deleteTask = (id)=> async (dispatch)=> {
         }
 
     } catch (error) {
+        dispatch({
+            type: "delete-task",
+            payload: {
+                error: error
+            }
+        });
         toast.error(error, {
             position: "top-right",
             autoClose: 3000,

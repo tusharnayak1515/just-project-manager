@@ -11,6 +11,10 @@ const handler = async (req, res)=> {
     let success;
     try {
       const projectId = req.query.project;
+      if(projectId.length != 24) {
+        success = false;
+        return res.json({success, error: "Invalid projectId", status: 400});
+      }
       const userId = req.user.id;
       const user = await User.findById(userId);
       if(!user) {

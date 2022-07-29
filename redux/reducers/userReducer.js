@@ -31,7 +31,13 @@ const userReducer = (state = initState, action) => {
         }
     }
     else if (action.type === 'register') {
-        const { user } = action.payload;
+        const { user, error } = action.payload;
+        if(error) {
+            return {
+                ...state,
+                isLoading: false
+            }
+        }
         return {
             ...state,
             user: user,
@@ -39,7 +45,13 @@ const userReducer = (state = initState, action) => {
         }
     }
     else if (action.type === 'login') {
-        const { user } = action.payload;
+        const { user, error } = action.payload;
+        if(error) {
+            return {
+                ...state,
+                isLoading: false
+            }
+        }
         return {
             ...state,
             user: user,
@@ -47,7 +59,13 @@ const userReducer = (state = initState, action) => {
         }
     }
     else if (action.type === 'profile') {
-        const { profile } = action.payload;
+        const { profile, error } = action.payload;
+        if(error) {
+            return {
+                ...state,
+                isLoading: false
+            }
+        }
         return {
             ...state,
             profile: profile,
@@ -55,7 +73,13 @@ const userReducer = (state = initState, action) => {
         }
     }
     // else if (action.type === 'set-profile') {
-    //     const { profile } = action.payload;
+    //     const { profile, error } = action.payload;
+    //     if(error) {
+    //         return {
+    //             ...state,
+    //             isLoading: false
+    //         }
+    //     }
     //     return {
     //         ...state,
     //         profile: profile,
@@ -63,7 +87,13 @@ const userReducer = (state = initState, action) => {
     //     }
     // }
     else if (action.type === 'edit-profile') {
-        const { profile } = action.payload;
+        const { profile, error } = action.payload;
+        if(error) {
+            return {
+                ...state,
+                isLoading: false
+            }
+        }
         return {
             ...state,
             profile: profile,
@@ -71,7 +101,13 @@ const userReducer = (state = initState, action) => {
         }
     }
     else if (action.type === 'logout') {
-        const { user, profile } = action.payload;
+        const { user, profile, error } = action.payload;
+        if(error) {
+            return {
+                ...state,
+                isLoading: false
+            }
+        }
         return {
             ...state,
             user: user,

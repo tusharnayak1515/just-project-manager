@@ -27,7 +27,6 @@ const Modal = ({setShow, id, title, description, status}) => {
         if(project.title.length >= 4 && project.description.length >= 5) {
             dispatch(actionCreators.addProject(project));
             setShow(false);
-            router.push("/");
         }
         else {
             if(project.title.length < 4) {
@@ -60,7 +59,7 @@ const Modal = ({setShow, id, title, description, status}) => {
         if(project.title.length >= 4 && project.description.length >= 5) {
             dispatch(actionCreators.editProject(project));
             setShow(false);
-            router.push(`/projects/${id}`);
+            // router.push(`/projects/${id}`);
         }
         else {
             if(project.title.length < 4) {
