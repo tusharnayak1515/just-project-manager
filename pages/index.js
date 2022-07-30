@@ -23,7 +23,7 @@ export default function Home() {
     else {
       dispatch(actionCreators.getAllProjects());
     }
-  }, [user, router.isReady, dispatch]);
+  }, [user, router, dispatch]);
   
   return (
     <div className={styles.container}>

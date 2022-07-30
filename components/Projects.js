@@ -11,7 +11,7 @@ const Projects = () => {
 
   useEffect(()=> {
     dispatch(actionCreators.getAllProjects());
-  }, [])
+  }, [dispatch])
 
   return (
     <div className={styles.projects_container}>

@@ -64,7 +64,7 @@ const ProjectPage = () => {
     return () => {
       dispatch(actionCreators.resetTask());
     }
-  }, [user, router.isReady]);
+  }, [user, router, dispatch]);
 
   return (
     <div className={styles.projectpage}>

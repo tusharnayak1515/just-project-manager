@@ -62,7 +62,7 @@ const Login = () => {
       //   router.replace('/');
       // }
     }
-  }, [user]);
+  }, [user, router]);
 
   return (
     <div className={styles.login}>
@@ -88,7 +88,7 @@ const Login = () => {
 
         <div className={styles.rightDiv}>
           <div className={styles.img_div}>
-            <Image src={bannerImg1} height="400px" width="500px" style={{border: "none", borderRadius: "1rem"}} />
+            <Image src={bannerImg1} alt="Login Banner" height="400px" width="500px" style={{border: "none", borderRadius: "1rem"}} />
           </div>
           <h1>Manage and track your projects status online!</h1>
         </div>

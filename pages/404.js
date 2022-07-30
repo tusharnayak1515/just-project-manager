@@ -22,7 +22,7 @@ const Not_Found = () => {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         {/* <Image src={invalidBanner} rel="Invalid Page gif" height="730px" width="1536px" /> */}
-        <Image src={invalidBanner} rel="Invalid Page gif" height="400px" width="500px" onContextMenu={onRightCLick} />
+        <Image src={invalidBanner} alt="Invalid Page gif" height="400px" width="500px" onContextMenu={onRightCLick} />
         <h1>PAGE NOT FOUND</h1>
     </div>
   )

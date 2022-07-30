@@ -70,7 +70,7 @@ const Register = () => {
     if(user) {
         router.push('/');
     }
-  }, [user]);
+  }, [user, router]);
 
   return (
     <div className={styles.register}>
@@ -97,7 +97,7 @@ const Register = () => {
 
         <div className={styles.rightDiv}>
           <div className={styles.img_div}>
-            <Image src={bannerImg2} height="400px" width="500px" style={{border: "none", borderRadius: "1rem"}} />
+            <Image src={bannerImg2} alt="Register Banner" height="400px" width="500px" style={{border: "none", borderRadius: "1rem"}} />
           </div>
           <h1>Manage and track your projects status online!</h1>
         </div>
