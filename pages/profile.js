@@ -11,7 +11,7 @@ import { toast } from 'react-toastify';
 import styles from '../styles/profile.module.css';
 import SpinnerModal from '../components/SpinnerModal';
 
-const profile = () => {
+const Profile = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const {user, profile, userLoading} = useSelector((state)=> state.userReducer,shallowEqual);
@@ -116,4 +116,4 @@ export const getServerSideProps = wrapper.getServerSideProps((store)=> async (co
   await store.dispatch(actionCreators.profile(cookieObj.user_token));
 });
 
-export default profile;
+export default Profile;

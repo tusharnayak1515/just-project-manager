@@ -10,10 +10,10 @@ import Head from "next/head";
 import Router from "next/router";
 import Nprogress from "nprogress";
 Nprogress.configure({ showSpinner: false, easing: 'ease', speed: 1000, parent: 'html' });
+import LoadingSpinner from "../components/LoadingSpinner";
 
 import "../styles/globals.css";
 import "react-toastify/dist/ReactToastify.css";
-import LoadingSpinner from "../components/LoadingSpinner";
 
 function MyApp({ Component, pageProps }) {
   const [show, setShow] = useState(false);
@@ -37,7 +37,7 @@ function MyApp({ Component, pageProps }) {
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css"
           integrity="sha512-42kB9yDlYiCEfx2xVwq0q7hT4uf26FUgSIZBK8uiaEnTdShXjwr8Ip1V4xGJMg3mHkUt9nNuTDxunHF0/EgxLQ=="
-          crossorigin="anonymous"
+          crossOrigin="anonymous"
           referrerpolicy="no-referrer"
         />
         {loading && <title>Just-Project Manager</title>}
