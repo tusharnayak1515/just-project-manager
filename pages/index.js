@@ -16,9 +16,7 @@ export default function Home() {
 
   useEffect(()=> {
     if(!user) {
-      if(router.isReady) {
-        router.replace('/login');
-      }
+      router.replace('/login');
     }
     else {
       dispatch(actionCreators.getAllProjects());

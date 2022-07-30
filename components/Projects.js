@@ -7,11 +7,14 @@ import Project from './Project';
 
 const Projects = () => {
   const dispatch = useDispatch();
+  const {user} = useSelector(state=> state.userReducer,shallowEqual);
   const {projects} = useSelector(state=> state.projectReducer,shallowEqual);
 
   useEffect(()=> {
-    dispatch(actionCreators.getAllProjects());
-  }, [dispatch])
+    if(user) {
+      dispatch(actionCreators.getAllProjects());
+    }
+  }, [user, dispatch])
 
   return (
     <div className={styles.projects_container}>
