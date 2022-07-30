@@ -7,6 +7,7 @@ import ReactAwesomeClock from 'react-awesome-clock';
 
 import styles from '../styles/navbar.module.css';
 import Clock from './Clock';
+import Head from 'next/head';
 
 const Navbar = ({setShow}) => {
   const router = useRouter();
@@ -24,6 +25,12 @@ const Navbar = ({setShow}) => {
 
   return (
     <nav className={styles.navbar}>
+      <Head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@500&family=Mochiy+Pop+One&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
       <div className={styles.leftSide}>
         <div className={styles.logo}>
           <h1>JPM</h1>

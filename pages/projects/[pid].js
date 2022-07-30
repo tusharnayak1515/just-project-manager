@@ -75,6 +75,14 @@ const ProjectPage = () => {
           content={`nextjs, next, project manager, todo list, ${project?.title}, ${project?.description}`}
         />
         <link rel="icon" href="/favicon.ico" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Cairo&family=Trispace:wght@200;600&display=swap"
+            rel="stylesheet"
+          />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap"
+            rel="stylesheet"
+          />
       </Head>
       {(taskLoading || projectLoading) && <SpinnerModal />}
       {show && (

@@ -29,6 +29,10 @@ export default function Home() {
         <title>Just-Project Manager</title>
         <meta name="keywords" content="nextjs, next, project manager, todo list" />
         <link rel="icon" href="/favicon.ico" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Archivo&family=Josefin+Sans:wght@600&display=swap"
+            rel="stylesheet"
+          />
       </Head>
 
       <main className={styles.main}>
