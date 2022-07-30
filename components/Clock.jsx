@@ -11,7 +11,7 @@ const Clock = () => {
     let seconds = mydate.getSeconds();
     var ampm = "AM";
 
-    if( hours > 12 ) {
+    if( hours >= 12 ) {
       hours = hours - 12;
       ampm = "PM";
     }

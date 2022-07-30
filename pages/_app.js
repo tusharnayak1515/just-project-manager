@@ -1,23 +1,53 @@
-import { Fragment, useState } from 'react';
-import { wrapper } from '../redux/store';
-import dynamic from 'next/dynamic';
+import { Fragment, useEffect, useState } from "react";
+import { wrapper } from "../redux/store";
+import dynamic from "next/dynamic";
 const Navbar = dynamic(() => import("../components/Navbar"), {
   ssr: false,
 });
-import Modal from '../components/Modal';
-import { ToastContainer } from 'react-toastify';
+import Modal from "../components/Modal";
+import { ToastContainer } from "react-toastify";
+import Head from "next/head";
+import Router from "next/router";
+import Nprogress from "nprogress";
+Nprogress.configure({ showSpinner: false, easing: 'ease', speed: 1000 });
 
-import '../styles/globals.css';
-import 'react-toastify/dist/ReactToastify.css';
+import "../styles/globals.css";
+import "react-toastify/dist/ReactToastify.css";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 function MyApp({ Component, pageProps }) {
   const [show, setShow] = useState(false);
-  return <Fragment>
-    {show && <Modal setShow={setShow} />}
-    <Navbar setShow={setShow} />
-    <Component {...pageProps} />
-    <ToastContainer />
-  </Fragment>
+  const [loading, setLoading] = useState(false);
+
+  useEffect(()=> {
+    Router.events.on("routeChangeStart", ()=> {
+      Nprogress.start();
+      setLoading(true);
+    });
+    Router.events.on("routeChangeComplete", ()=> {
+      Nprogress.done();
+      setLoading(false);
+    });
+  }, []);
+
+  return (
+    <Fragment>
+      <Head>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css"
+          integrity="sha512-42kB9yDlYiCEfx2xVwq0q7hT4uf26FUgSIZBK8uiaEnTdShXjwr8Ip1V4xGJMg3mHkUt9nNuTDxunHF0/EgxLQ=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"
+        />
+      </Head>
+      {loading && <LoadingSpinner />}
+      {show && <Modal setShow={setShow} />}
+      <Navbar setShow={setShow} />
+      {!loading && <Component {...pageProps} />}
+      <ToastContainer />
+    </Fragment>
+  );
 }
 
 export default wrapper.withRedux(MyApp);

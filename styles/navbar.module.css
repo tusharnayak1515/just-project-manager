@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@500&family=Mochiy+Pop+One&display=swap');
 
 .navbar {
-    position: sticky;
-    top: 0;
+    /* position: sticky;
+    top: 0; */
     height: 12vh;
     width: 100%;
     padding: 2rem;
@@ -10,7 +10,7 @@
     justify-content: space-between;
     align-items: center;
     color: white;
-    z-index: 2000;
+    /* z-index: 2000; */
     background-color: rgb(1, 1, 37);
 }
 
