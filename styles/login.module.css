@@ -95,7 +95,7 @@
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
     /* background-color: #3521b5; */
-    background: url("../public/static/images/banner_bg.jpg") center center no-repeat;
+    background: url("/static/images/banner_bg.jpg") center center no-repeat;
 }
 
 .login .rightDiv .img_div {
