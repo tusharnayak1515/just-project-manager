@@ -6,8 +6,13 @@ const nextConfig = {
   },
   rules: {
     test: /\.(png|jpg|jpeg|webp|svg|gif)$/i,
-    loader: 'css-loader',
-    options: { url: false, sourceMap: true }
+    use: {
+      loader: 'url-loader',
+      options: {
+          limit: 50000
+
+      }
+    }
   }
 }
 
