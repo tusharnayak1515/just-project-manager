@@ -9,7 +9,7 @@ export const register =
   async (dispatch) => {
     const url =
       process.env.NODE_ENV === "production"
-        ? "https://just-project-manager-git-main-tusharnayak1515-gmailcom.vercel.app"
+        ? "https://just-project-manager.vercel.app"
         : "http://localhost:3000";
 
     dispatch({
@@ -82,7 +82,7 @@ export const login =
   async (dispatch) => {
     const url =
       process.env.NODE_ENV === "production"
-        ? "https://just-project-manager-git-main-tusharnayak1515-gmailcom.vercel.app"
+        ? "https://just-project-manager.vercel.app"
         : "http://localhost:3000";
 
     dispatch({
@@ -155,7 +155,7 @@ export const something = () => async (dispatch) => {
 export const profile = (token) => async (dispatch) => {
     const url =
       process.env.NODE_ENV === "production"
-        ? "https://just-project-manager-git-main-tusharnayak1515-gmailcom.vercel.app"
+        ? "https://just-project-manager.vercel.app"
         : "http://localhost:3000";
   try {
     // console.log("yeah");
@@ -225,7 +225,7 @@ export const editProfile =
   async (dispatch) => {
     const url =
       process.env.NODE_ENV === "production"
-        ? "https://just-project-manager-git-main-tusharnayak1515-gmailcom.vercel.app"
+        ? "https://just-project-manager.vercel.app"
         : "http://localhost:3000";
     dispatch({
       type: "user-loading",
@@ -296,7 +296,7 @@ export const editProfile =
 export const logout = () => async (dispatch) => {
     const url =
       process.env.NODE_ENV === "production"
-        ? "https://just-project-manager-git-main-tusharnayak1515-gmailcom.vercel.app"
+        ? "https://just-project-manager.vercel.app"
         : "http://localhost:3000";
   try {
     const res = await axios.get(`${url}/api/auth/logout`);
@@ -368,7 +368,7 @@ export const logout = () => async (dispatch) => {
 export const getAllProjects = (token) => async (dispatch) => {
   const url =
       process.env.NODE_ENV === "production"
-        ? "https://just-project-manager-git-main-tusharnayak1515-gmailcom.vercel.app"
+        ? "https://just-project-manager.vercel.app"
         : "http://localhost:3000";
   try {
     const res = await axios.get(`${url}/api/projects/`, {
@@ -426,7 +426,7 @@ export const getAllProjects = (token) => async (dispatch) => {
 export const getProject = (id, token) => async (dispatch) => {
     const url =
     process.env.NODE_ENV === "production"
-      ? "https://just-project-manager-git-main-tusharnayak1515-gmailcom.vercel.app"
+      ? "https://just-project-manager.vercel.app"
       : "http://localhost:3000";
   try {
     const res = await axios.get(
@@ -484,7 +484,7 @@ export const addProject =
   async (dispatch) => {
     const url =
       process.env.NODE_ENV === "production"
-        ? "https://just-project-manager-git-main-tusharnayak1515-gmailcom.vercel.app"
+        ? "https://just-project-manager.vercel.app"
         : "http://localhost:3000";
     dispatch({
       type: "project-loading",
@@ -563,7 +563,7 @@ export const editProject =
   async (dispatch) => {
     const url =
       process.env.NODE_ENV === "production"
-        ? "https://just-project-manager-git-main-tusharnayak1515-gmailcom.vercel.app"
+        ? "https://just-project-manager.vercel.app"
         : "http://localhost:3000";
     dispatch({
       type: "project-loading",
@@ -640,7 +640,7 @@ export const editProject =
 export const deleteProject = (id) => async (dispatch) => {
     const url =
       process.env.NODE_ENV === "production"
-        ? "https://just-project-manager-git-main-tusharnayak1515-gmailcom.vercel.app"
+        ? "https://just-project-manager.vercel.app"
         : "http://localhost:3000";
   try {
     const res = await axios.delete(`${url}/api/projects/deleteproject?project=${id}`);
@@ -705,7 +705,7 @@ export const deleteProject = (id) => async (dispatch) => {
 export const getAllTasks = (id, token) => async (dispatch) => {
     const url =
     process.env.NODE_ENV === "production"
-      ? "https://just-project-manager-git-main-tusharnayak1515-gmailcom.vercel.app"
+      ? "https://just-project-manager.vercel.app"
       : "http://localhost:3000";
   try {
     const res = await axios.get(
@@ -764,7 +764,7 @@ export const getAllTasks = (id, token) => async (dispatch) => {
 export const getTask = (id) => async (dispatch) => {
   const url =
     process.env.NODE_ENV === "production"
-      ? "https://just-project-manager-git-main-tusharnayak1515-gmailcom.vercel.app"
+      ? "https://just-project-manager.vercel.app"
       : "http://localhost:3000";
 
   dispatch({
@@ -829,7 +829,7 @@ export const resetTask = () => async (dispatch) => {
 export const addTask = (id, title) => async (dispatch) => {
   const url =
     process.env.NODE_ENV === "production"
-      ? "https://just-project-manager-git-main-tusharnayak1515-gmailcom.vercel.app"
+      ? "https://just-project-manager.vercel.app"
       : "http://localhost:3000";
   dispatch({
     type: "task-loading",
@@ -900,7 +900,7 @@ export const editTask =
   async (dispatch) => {
     const url =
     process.env.NODE_ENV === "production"
-      ? "https://just-project-manager-git-main-tusharnayak1515-gmailcom.vercel.app"
+      ? "https://just-project-manager.vercel.app"
       : "http://localhost:3000";
 
     dispatch({
@@ -974,7 +974,7 @@ export const editTask =
 export const deleteTask = (id) => async (dispatch) => {
   const url =
     process.env.NODE_ENV === "production"
-      ? "https://just-project-manager-git-main-tusharnayak1515-gmailcom.vercel.app"
+      ? "https://just-project-manager.vercel.app"
       : "http://localhost:3000";
   dispatch({
     type: "task-loading",

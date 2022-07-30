@@ -7,7 +7,7 @@ const nextConfig = {
   rules: {
     test: /\.(png|jpg|jpeg|webp|svg|gif)$/i,
     use: {
-      loader: 'url-loader',
+      loader: 'css-loader',
       options: {
           limit: 50000
 
