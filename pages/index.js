@@ -56,7 +56,9 @@ export default function Home() {
 export const getServerSideProps = wrapper.getServerSideProps((store)=> async (context)=> {
   const mycookie = context?.req?.headers?.cookie || "";
   const cookieObj = cookie.parse(mycookie);
-  await store.dispatch(actionCreators.profile(cookieObj.user_token));
-  await store.dispatch(actionCreators.getAllProjects(cookieObj.user_token));
-  // await store.dispatch(actionCreators.something());
+  if(cookieObj.user_token) {
+    await store.dispatch(actionCreators.profile(cookieObj.user_token));
+    await store.dispatch(actionCreators.getAllProjects(cookieObj.user_token));
+    // await store.dispatch(actionCreators.something());
+  }
 });
