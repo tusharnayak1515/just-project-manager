@@ -5,14 +5,9 @@ const nextConfig = {
     buildActivity: false
   },
   rules: {
-    test: /\.(png|jpg|jpeg|webp|svg|gif)$/i,
-    use: {
-      loader: 'css-loader',
-      options: {
-          limit: 50000
-
-      }
-    }
+    test: /\.s[ac]ss$/i,
+    loader: "css-loader", 
+    options: { sourceMap: true}
   }
 }
 
