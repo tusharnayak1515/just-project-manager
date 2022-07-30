@@ -10,13 +10,14 @@ import Modal from "../../components/Modal";
 import TaskModal from "../../components/TaskModal";
 
 import styles from "../../styles/projectpage.module.css";
+import SpinnerModal from "../../components/SpinnerModal";
 
 const ProjectPage = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.userReducer, shallowEqual);
-  const { project } = useSelector(state => state.projectReducer, shallowEqual);
-  const { tasks, task, isLoading } = useSelector((state) => state.taskReducer, shallowEqual);
+  const { project, projectLoading } = useSelector(state => state.projectReducer, shallowEqual);
+  const { tasks, task, taskLoading } = useSelector((state) => state.taskReducer, shallowEqual);
   const [projectShow, setProjectShow] = useState(false);
   const [show, setShow] = useState(false);
   const [taskShow, setTaskShow] = useState(false);
@@ -75,13 +76,14 @@ const ProjectPage = () => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      {(taskLoading || projectLoading) && <SpinnerModal />}
       {show && (
         <TaskModal
           setShow={setShow}
           id={router.isReady ? router.query.pid : null}
         />
       )}
-      {taskShow && task && !isLoading && (
+      {taskShow && task && !taskLoading && (
         <TaskModal
           setShow={setTaskShow}
           id={router.isReady ? router.query.pid : null}

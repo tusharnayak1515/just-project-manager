@@ -12,14 +12,14 @@ if(typeof window !== 'undefined') {
 const initState = {
     tasks: isTasks,
     task: null,
-    isLoading: false
+    taskLoading: false
 }
 
 const taskReducer = (state = initState, action) => {
     if (action.type === 'task-loading') {
         return {
             ...state,
-            isLoading: true
+            taskLoading: true
         }
     }
     else if (action.type === 'get-tasks') {
@@ -27,13 +27,13 @@ const taskReducer = (state = initState, action) => {
         if(error) {
             return {
                 ...state,
-                isLoading: false
+                taskLoading: false
             }
         }
         return {
             ...state,
             tasks: tasks,
-            isLoading: false
+            taskLoading: false
         }
     }
     else if (action.type === 'get-task') {
@@ -41,13 +41,13 @@ const taskReducer = (state = initState, action) => {
         if(error) {
             return {
                 ...state,
-                isLoading: false
+                taskLoading: false
             }
         }
         return {
             ...state,
             task: task,
-            isLoading: false
+            taskLoading: false
         }
     }
     else if (action.type === 'reset-task') {
@@ -61,13 +61,13 @@ const taskReducer = (state = initState, action) => {
         if(error) {
             return {
                 ...state,
-                isLoading: false
+                taskLoading: false
             }
         }
         return {
             ...state,
             tasks: tasks,
-            isLoading: false
+            taskLoading: false
         }
     }
     else if (action.type === 'edit-task') {
@@ -75,13 +75,13 @@ const taskReducer = (state = initState, action) => {
         if(error) {
             return {
                 ...state,
-                isLoading: false
+                taskLoading: false
             }
         }
         return {
             ...state,
             tasks: tasks,
-            isLoading: false
+            taskLoading: false
         }
     }
     else if (action.type === 'delete-task') {
@@ -89,13 +89,13 @@ const taskReducer = (state = initState, action) => {
         if(error) {
             return {
                 ...state,
-                isLoading: false
+                taskLoading: false
             }
         }
         return {
             ...state,
             tasks: tasks,
-            isLoading: false
+            taskLoading: false
         }
     }
     else if (action.type === 'logout') {
@@ -103,14 +103,14 @@ const taskReducer = (state = initState, action) => {
         if(error) {
             return {
                 ...state,
-                isLoading: false
+                taskLoading: false
             }
         }
         return {
             ...state,
             tasks: tasks,
             task: task,
-            isLoading: false
+            taskLoading: false
         }
     }
     else {

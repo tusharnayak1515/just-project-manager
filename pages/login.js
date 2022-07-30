@@ -8,7 +8,6 @@ import { actionCreators } from '../redux';
 import bannerImg1 from '../public/static/images/banner3.jpg';
 // import bannerImg2 from '../public/static/images/bannerimg.jpg';
 import { toast } from 'react-toastify';
-import LoadingSpinner from '../components/LoadingSpinner';
 
 import styles from '../styles/login.module.css';
 
@@ -16,7 +15,7 @@ const Login = () => {
   const router = useRouter();
   const [userDetails, setUserDetails] = useState({email: "", password: ""});
   const dispatch = useDispatch();
-  const {user, isLoading} = useSelector(state=> state.userReducer,shallowEqual);
+  const {user} = useSelector(state=> state.userReducer,shallowEqual);
 
   const onValueChange = (e)=> {
     e.preventDefault();
@@ -64,10 +63,6 @@ const Login = () => {
       // }
     }
   }, [user]);
-
-  if(isLoading) {
-    return <LoadingSpinner />
-  }
 
   return (
     <div className={styles.login}>

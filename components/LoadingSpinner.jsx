@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import loadingSpinner from '../public/static/images/loading.gif';
+import loadingSpinner from '../public/static/images/loading4.svg';
 
 import styles from '../styles/loading.module.css';
 

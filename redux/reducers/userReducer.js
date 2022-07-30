@@ -20,14 +20,14 @@ else {
 const initState = {
     user: isUser,
     profile: isProfile,
-    isLoading: false
+    userLoading: false
 }
 
 const userReducer = (state = initState, action) => {
     if (action.type === 'user-loading') {
         return {
             ...state,
-            isLoading: true
+            userLoading: true
         }
     }
     else if (action.type === 'register') {
@@ -35,13 +35,13 @@ const userReducer = (state = initState, action) => {
         if(error) {
             return {
                 ...state,
-                isLoading: false
+                userLoading: false
             }
         }
         return {
             ...state,
             user: user,
-            isLoading: false
+            userLoading: false
         }
     }
     else if (action.type === 'login') {
@@ -49,13 +49,13 @@ const userReducer = (state = initState, action) => {
         if(error) {
             return {
                 ...state,
-                isLoading: false
+                userLoading: false
             }
         }
         return {
             ...state,
             user: user,
-            isLoading: false
+            userLoading: false
         }
     }
     else if (action.type === 'profile') {
@@ -63,13 +63,13 @@ const userReducer = (state = initState, action) => {
         if(error) {
             return {
                 ...state,
-                isLoading: false
+                userLoading: false
             }
         }
         return {
             ...state,
             profile: profile,
-            isLoading: false
+            userLoading: false
         }
     }
     // else if (action.type === 'set-profile') {
@@ -77,13 +77,13 @@ const userReducer = (state = initState, action) => {
     //     if(error) {
     //         return {
     //             ...state,
-    //             isLoading: false
+    //             userLoading: false
     //         }
     //     }
     //     return {
     //         ...state,
     //         profile: profile,
-    //         isLoading: false
+    //         userLoading: false
     //     }
     // }
     else if (action.type === 'edit-profile') {
@@ -91,13 +91,13 @@ const userReducer = (state = initState, action) => {
         if(error) {
             return {
                 ...state,
-                isLoading: false
+                userLoading: false
             }
         }
         return {
             ...state,
             profile: profile,
-            isLoading: false
+            userLoading: false
         }
     }
     else if (action.type === 'logout') {
@@ -105,14 +105,14 @@ const userReducer = (state = initState, action) => {
         if(error) {
             return {
                 ...state,
-                isLoading: false
+                userLoading: false
             }
         }
         return {
             ...state,
             user: user,
             profile: profile,
-            isLoading: false
+            userLoading: false
         }
     }
     else {

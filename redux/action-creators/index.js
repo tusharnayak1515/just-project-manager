@@ -200,6 +200,10 @@ export const profile = (token)=> async (dispatch)=> {
 // }
 
 export const editProfile = ({name,email})=> async (dispatch)=> {
+    dispatch({
+        type: "user-loading"
+    });
+
     const token = localStorage.getItem("user_token");
     try {
         const res = await axios.put(`/api/auth/editprofile`, {name,email}, {headers: {"user_token": token}});
@@ -435,6 +439,10 @@ export const getProject = (id,token)=> async (dispatch)=> {
 }
 
 export const addProject = ({title,description})=> async (dispatch)=> {
+    dispatch({
+        type: "project-loading"
+    });
+
     const token = localStorage.getItem("user_token");
     try {
         const res = await axios.post(`/api/projects/addproject`, {title,description}, {headers: {"user_token": token}});
@@ -498,7 +506,10 @@ export const addProject = ({title,description})=> async (dispatch)=> {
 }
 
 export const editProject = ({id,title,description,status})=> async (dispatch)=> {
-    // const token = localStorage.getItem("user_token");
+    dispatch({
+        type: "project-loading"
+    });
+    
     try {
         const res = await axios.put(`/api/projects/editproject?project=${id}`, {title,description,status});
         
@@ -562,7 +573,6 @@ export const editProject = ({id,title,description,status})=> async (dispatch)=> 
 }
 
 export const deleteProject = (id)=> async (dispatch)=> {
-    // const token = localStorage.getItem("user_token");
     try {
         const res = await axios.delete(`/api/projects/deleteproject?project=${id}`);
 
@@ -740,7 +750,10 @@ export const resetTask = ()=> async (dispatch)=> {
 }
 
 export const addTask = (id,title)=> async (dispatch)=> {
-    // const token = localStorage.getItem("user_token");
+    dispatch({
+        type: "task-loading"
+    });
+
     try {
         const res = await axios.post(`/api/tasks/addtask?project=${id}`, {title});
         if(res.data.success) {
@@ -803,7 +816,10 @@ export const addTask = (id,title)=> async (dispatch)=> {
 }
 
 export const editTask = ({id,title,status})=> async (dispatch)=> {
-    // const token = localStorage.getItem("user_token");
+    dispatch({
+        type: "task-loading"
+    });
+    
     try {
         const res = await axios.put(`/api/tasks/edittask?task=${id}`, {title,status});
 

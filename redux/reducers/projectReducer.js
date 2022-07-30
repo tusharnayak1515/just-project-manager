@@ -11,14 +11,14 @@ if(typeof window !== 'undefined') {
 const initState = {
     projects: isProjects,
     project: null,
-    isLoading: false
+    projectLoading: false
 }
 
 const projectReducer = (state = initState, action) => {
     if (action.type === 'project-loading') {
         return {
             ...state,
-            isLoading: true
+            projectLoading: true
         }
     }
     else if (action.type === 'get-projects') {
@@ -26,13 +26,13 @@ const projectReducer = (state = initState, action) => {
         if(error) {
             return {
                 ...state,
-                isLoading: false
+                projectLoading: false
             }
         }
         return {
             ...state,
             projects: projects,
-            isLoading: false
+            projectLoading: false
         }
     }
     else if (action.type === 'get-project') {
@@ -40,13 +40,13 @@ const projectReducer = (state = initState, action) => {
         if(error) {
             return {
                 ...state,
-                isLoading: false
+                projectLoading: false
             }
         }
         return {
             ...state,
             project: project,
-            isLoading: false
+            projectLoading: false
         }
     }
     else if (action.type === 'add-project') {
@@ -54,13 +54,13 @@ const projectReducer = (state = initState, action) => {
         if(error) {
             return {
                 ...state,
-                isLoading: false
+                projectLoading: false
             }
         }
         return {
             ...state,
             projects: projects,
-            isLoading: false
+            projectLoading: false
         }
     }
     else if (action.type === 'edit-project') {
@@ -68,14 +68,14 @@ const projectReducer = (state = initState, action) => {
         if(error) {
             return {
                 ...state,
-                isLoading: false
+                projectLoading: false
             }
         }
         return {
             ...state,
             projects: projects,
             project: project,
-            isLoading: false
+            projectLoading: false
         }
     }
     else if (action.type === 'delete-project') {
@@ -83,14 +83,14 @@ const projectReducer = (state = initState, action) => {
         if(error) {
             return {
                 ...state,
-                isLoading: false
+                projectLoading: false
             }
         }
         return {
             ...state,
             projects: projects,
             project: null,
-            isLoading: false
+            projectLoading: false
         }
     }
     else if (action.type === 'add-task') {
@@ -98,13 +98,13 @@ const projectReducer = (state = initState, action) => {
         if(error) {
             return {
                 ...state,
-                isLoading: false
+                projectLoading: false
             }
         }
         return {
             ...state,
             project: project,
-            isLoading: false
+            projectLoading: false
         }
     }
     else if (action.type === 'edit-task') {
@@ -112,13 +112,13 @@ const projectReducer = (state = initState, action) => {
         if(error) {
             return {
                 ...state,
-                isLoading: false
+                projectLoading: false
             }
         }
         return {
             ...state,
             project: project,
-            isLoading: false
+            projectLoading: false
         }
     }
     else if (action.type === 'delete-task') {
@@ -126,13 +126,13 @@ const projectReducer = (state = initState, action) => {
         if(error) {
             return {
                 ...state,
-                isLoading: false
+                projectLoading: false
             }
         }
         return {
             ...state,
             project: project,
-            isLoading: false
+            projectLoading: false
         }
     }
     else if (action.type === 'logout') {
@@ -140,14 +140,14 @@ const projectReducer = (state = initState, action) => {
         if(error) {
             return {
                 ...state,
-                isLoading: false
+                projectLoading: false
             }
         }
         return {
             ...state,
             projects: projects,
             project: project,
-            isLoading: false
+            projectLoading: false
         }
     }
     else {

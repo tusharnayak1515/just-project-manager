@@ -1,10 +1,18 @@
-.invalid {
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@900&display=swap');
+
+.notFound {
     min-height: 88vh;
     min-width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    /* justify-content: center; */
     align-items: center;
     background-color: rgb(239, 239, 239);
     /* background: url("../public/static/images/notFound.gif") center center no-repeat;
     background-size: contain; */
+}
+
+.notFound h1 {
+    font-size: 3rem;
+    font-family: 'Cinzel', serif;
 }

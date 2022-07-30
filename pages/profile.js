@@ -9,11 +9,12 @@ import { MdEdit } from 'react-icons/md';
 import { toast } from 'react-toastify';
 
 import styles from '../styles/profile.module.css';
+import SpinnerModal from '../components/SpinnerModal';
 
 const profile = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const {user,profile} = useSelector((state)=> state.userReducer,shallowEqual);
+  const {user, profile, userLoading} = useSelector((state)=> state.userReducer,shallowEqual);
   const [edit, setEdit] = useState(false);
   const [userDetails, setUserDetails] = useState({name: profile ? profile?.name : "", email: profile ? profile?.email : ""});
 
@@ -81,6 +82,8 @@ const profile = () => {
         <meta name="keywords" content="nextjs, next, project manager, todo list, profile" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      {userLoading && <SpinnerModal />}
 
       <h1 className={styles.profile_head}>Profile</h1>
 

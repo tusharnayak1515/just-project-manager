@@ -12,7 +12,7 @@ const Not_Found = () => {
   }
 
   return (
-    <div className={styles.invalid}>
+    <div className={styles.notFound}>
         <Head>
           <title>Not Found</title>
           <meta
@@ -23,6 +23,7 @@ const Not_Found = () => {
         </Head>
         {/* <Image src={invalidBanner} rel="Invalid Page gif" height="730px" width="1536px" /> */}
         <Image src={invalidBanner} rel="Invalid Page gif" height="400px" width="500px" onContextMenu={onRightCLick} />
+        <h1>PAGE NOT FOUND</h1>
     </div>
   )
 }

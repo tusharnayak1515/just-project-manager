@@ -9,7 +9,7 @@ import { ToastContainer } from "react-toastify";
 import Head from "next/head";
 import Router from "next/router";
 import Nprogress from "nprogress";
-Nprogress.configure({ showSpinner: false, easing: 'ease', speed: 1000 });
+Nprogress.configure({ showSpinner: false, easing: 'ease', speed: 1000, parent: 'html' });
 
 import "../styles/globals.css";
 import "react-toastify/dist/ReactToastify.css";
@@ -40,6 +40,9 @@ function MyApp({ Component, pageProps }) {
           crossorigin="anonymous"
           referrerpolicy="no-referrer"
         />
+        {loading && <title>Just-Project Manager</title>}
+        <meta name="keywords" content="nextjs, next, project manager, todo list" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       {loading && <LoadingSpinner />}
       {show && <Modal setShow={setShow} />}

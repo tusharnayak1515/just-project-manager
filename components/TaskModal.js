@@ -1,5 +1,4 @@
-import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import ReactDom from 'react-dom';
 import { useDispatch } from 'react-redux';
 import { actionCreators } from '../redux';
@@ -8,9 +7,9 @@ import { toast } from 'react-toastify';
 import styles from '../styles/modal.module.css';
 
 const TaskModal = ({id, setShow, tid, title, status}) => {
-    const router = useRouter();
     const dispatch = useDispatch();
     const [task, setTask] = useState({id: tid ? tid : '', title: title ? title : '', status: status ? status : ''});
+    const topRef = useRef();
 
     const onValueChange = (e)=> {
         e.preventDefault();
@@ -66,10 +65,14 @@ const TaskModal = ({id, setShow, tid, title, status}) => {
         setShow(false);
     }
 
+    useEffect(()=> {
+        topRef.current?.scrollIntoView({ behavior: "smooth" });
+    }, []);
+
     return ReactDom.createPortal(
-        <div className={styles.overlay}>
+        <div className={styles.overlay} ref={topRef}>
             <div className={styles.modal}>
-                {tid ? <h1 className={styles.task_head}>Edit Task</h1> : <h1 className={styles.task_head}>Add Task</h1>}
+                <h1 className={styles.task_head}>{tid ? "Edit Task" : "Add Task"}</h1>
                 <input type="text" name="title" value={task.title} onChange={onValueChange} placeholder="Task Title" />
                 {tid && <select name="status" id="status" value={task.status} onChange={onValueChange}>
                     <option value="created">created</option>

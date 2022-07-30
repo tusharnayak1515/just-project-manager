@@ -11,8 +11,7 @@ const handler = async (req, res)=> {
     try {
       const userId = req.user.id;
       const user = await User.findById(userId)
-        .select("-password")
-        .populate("projects", "_id title description tasks status");
+        .select("-password");
 
       if(!user) {
         success = false;
