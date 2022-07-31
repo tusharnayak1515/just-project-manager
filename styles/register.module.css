@@ -13,8 +13,8 @@
     min-width: 50%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     /* background-color: orchid; */
 }
 
@@ -22,6 +22,10 @@
     height: 60vh;
     width: 45%;
     /* background-color: yellowgreen; */
+}
+
+.register .leftDiv .just_heading {
+    display: none;
 }
 
 .register .leftDiv .left_wrapper .head_Div {
@@ -85,21 +89,19 @@
 }
 
 .register .rightDiv {
-    position: relative;
     min-height: 100vh;
     min-width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     border: none;
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
-    /* background-color: #3521b5; */
     background: url("/static/images/banner_bg.jpg") center center no-repeat;
 }
 
 .register .rightDiv .img_div {
-    margin-top: 5rem;
     margin-bottom: 3rem;
     width: 75%;
     display: flex;
@@ -109,21 +111,281 @@
     /* background-color: olive; */
 }
 
-/* .register .rightDiv::before {
-    position: absolute;
-    content: "";
-    min-height: 100%;
-    min-width: 100%;
-    background: url("../public/static/images/banner3.jpg") center center no-repeat;
-    background-size: cover;
-    opacity: 0.85;
-    z-index: 10;
-} */
+.register .rightDiv .img_div span img {
+    height: 20rem !important;
+    width: 25rem !important;
+    /* background-color: olive; */
+}
 
 .register .rightDiv h1 {
-    /* color: #3521b5; */
     color: white;
+    text-align: center;
     font-family: 'Ibarra Real Nova', serif;
-    border: none;
-    border-radius: 1rem;
+}
+
+/* Media Queries */
+
+@media only screen and (max-width: 480px) {
+
+    .register {
+        background: url("/static/images/banner_bg.jpg") center center no-repeat;
+        background-size: cover;
+    }
+
+    .register .rightDiv {
+        display: none;
+    }
+
+    .register .leftDiv {
+        min-width: 100%;
+        justify-content: flex-start;
+    }
+
+    .register .leftDiv .just_heading {
+        margin: 2rem 0;
+        color: white;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .register .leftDiv .left_wrapper {
+        height: 70vh;
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .register .leftDiv .left_wrapper .head_Div {
+        justify-content: center;
+    }
+
+    .register .leftDiv .left_wrapper .head_Div h1 {
+        color: white;
+    }
+
+    .register .leftDiv .left_wrapper .inputDiv {
+        height: 50vh;
+        width: 90%;
+        margin-bottom: 1.5rem;
+        border-bottom: 0.1rem solid white;
+        background-color: blueviolet;
+    }
+
+    .register .leftDiv .left_wrapper .inputDiv input {
+        margin-bottom: 1.5rem;
+        border: 0.1rem solid #3521b5;
+        border-radius: 1rem;
+    }
+
+    .register .leftDiv .left_wrapper .inputDiv button {
+        padding: 0.7rem 1.5rem;
+        margin: 0;
+        color: #3521b5;
+        border: 0.1rem solid #3521b5;
+        border-radius: 1rem;
+        background-color: white;
+    }
+
+    .register .leftDiv .left_wrapper .inputDiv button:hover {
+        color: white;
+        border: 0.1rem solid white;
+        background-color: #3521b5;
+    }
+
+    .register .leftDiv .left_wrapper h3 {
+        color: white;
+    }
+
+    .register .leftDiv .left_wrapper .loginText {
+        color: aqua;
+        cursor: pointer;
+    }
+
+}
+
+@media only screen and (min-width: 481px) and (max-width: 600px) {
+
+    .register {
+        background: url("/static/images/banner_bg.jpg") center center no-repeat;
+        background-size: cover;
+    }
+
+    .register .rightDiv {
+        display: none;
+    }
+
+    .register .leftDiv {
+        min-width: 100%;
+        justify-content: flex-start;
+        /* background-color: orchid; */
+    }
+
+    .register .leftDiv .just_heading {
+        margin: 2rem 0;
+        color: white;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        /* background-color: orange; */
+    }
+
+    .register .leftDiv .left_wrapper {
+        height: 70vh;
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        /* background-color: yellowgreen; */
+    }
+
+    .register .leftDiv .left_wrapper .head_Div {
+        justify-content: center;
+    }
+
+    .register .leftDiv .left_wrapper .head_Div h1 {
+        color: white;
+    }
+
+    .register .leftDiv .left_wrapper .inputDiv {
+        height: 47vh;
+        width: 80%;
+        margin-bottom: 1.5rem;
+        border-bottom: 0.1rem solid white;
+        /* background-color: blueviolet; */
+    }
+
+    .register .leftDiv .left_wrapper .inputDiv input {
+        margin-bottom: 1.5rem;
+        border: 0.1rem solid #3521b5;
+        border-radius: 1rem;
+    }
+
+    .register .leftDiv .left_wrapper .inputDiv button {
+        padding: 0.7rem 1.5rem;
+        margin: 0;
+        color: #3521b5;
+        border: 0.1rem solid #3521b5;
+        border-radius: 1rem;
+        background-color: white;
+    }
+
+    .register .leftDiv .left_wrapper .inputDiv button:hover {
+        color: white;
+        border: 0.1rem solid white;
+        background-color: #3521b5;
+    }
+
+    .register .leftDiv .left_wrapper h3 {
+        color: white;
+    }
+
+    .register .leftDiv .left_wrapper .loginText {
+        color: aqua;
+        cursor: pointer;
+    }
+
+}
+
+@media only screen and (min-width: 601px) and (max-width: 720px) {
+
+    .register {
+        background: url("/static/images/banner_bg.jpg") center center no-repeat;
+        background-size: cover;
+    }
+
+    .register .rightDiv {
+        display: none;
+    }
+
+    .register .leftDiv {
+        min-width: 100%;
+        justify-content: flex-start;
+        /* background-color: orchid; */
+    }
+
+    .register .leftDiv .just_heading {
+        margin: 2rem 0;
+        color: white;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        /* background-color: orange; */
+    }
+
+    .register .leftDiv .left_wrapper {
+        height: 70vh;
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        /* background-color: yellowgreen; */
+    }
+
+    .register .leftDiv .left_wrapper .head_Div {
+        justify-content: center;
+    }
+
+    .register .leftDiv .left_wrapper .head_Div h1 {
+        color: white;
+    }
+
+    .register .leftDiv .left_wrapper .inputDiv {
+        height: 47vh;
+        width: 80%;
+        margin-bottom: 1.5rem;
+        border-bottom: 0.1rem solid white;
+        /* background-color: blueviolet; */
+    }
+
+    .register .leftDiv .left_wrapper .inputDiv input {
+        margin-bottom: 1.5rem;
+        border: 0.1rem solid #3521b5;
+        border-radius: 1rem;
+    }
+
+    .register .leftDiv .left_wrapper .inputDiv button {
+        padding: 0.7rem 1.5rem;
+        margin: 0;
+        color: #3521b5;
+        border: 0.1rem solid #3521b5;
+        border-radius: 1rem;
+        background-color: white;
+    }
+
+    .register .leftDiv .left_wrapper .inputDiv button:hover {
+        color: white;
+        border: 0.1rem solid white;
+        background-color: #3521b5;
+    }
+
+    .register .leftDiv .left_wrapper h3 {
+        color: white;
+    }
+
+    .register .leftDiv .left_wrapper .loginText {
+        color: aqua;
+        cursor: pointer;
+    }
+
+}
+
+@media only screen and (min-width: 721px) and (max-width: 1200px) {
+
+    .register .leftDiv .left_wrapper {
+        width: 60%;
+    }
+
+    .register .rightDiv .img_div span img {
+        height: 20rem !important;
+        width: 35rem !important;
+    }
+
 }

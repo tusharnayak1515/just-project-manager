@@ -81,9 +81,10 @@ const Register = () => {
         </Head>
 
         <div className={styles.leftDiv}>
+          <h1 className={styles.just_heading}>JUST-PROJECT MANAGER</h1>
           <div className={styles.left_wrapper}>
             <div className={styles.head_Div}>
-            <h1 className={styles.head}>Register</h1>
+              <h1 className={styles.head}>Register</h1>
             </div>
             <div className={styles.inputDiv}>
               <input type="text" name="name" placeholder='Name' value={userDetails.name} onChange={onValueChange} />
