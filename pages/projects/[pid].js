@@ -109,7 +109,19 @@ const ProjectPage = () => {
           status={project?.status}
         />
       )}
-      <h1 className={styles.title}>{project?.title}</h1>
+      
+      <div className={styles.title_div}>
+        <h1 className={styles.title}>{project?.title}</h1>
+        <div className={styles.title_icons}>
+          <h2 className={styles.editIcon} onClick={onEditClick}>
+            <FaEdit />
+          </h2>
+          <h2 className={styles.deleteIcon} onClick={onDelete}>
+            <FaTrash />
+          </h2>
+        </div>
+      </div>
+
       <p className={styles.description}>{project?.description}</p>
       <div className={styles.icons}>
         <h2 className={styles.editIcon} onClick={onEditClick}>

@@ -10,14 +10,27 @@
     /* background-color: orange; */
 }
 
-.projectpage .title {
+.projectpage .title_div {
+    width: 100%;
     margin-top: 2rem;
     margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: palegreen; */
+}
+
+.projectpage .title_div .title_icons {
+    display: none;
+}
+
+.projectpage .title {
     font-family: 'Trispace', sans-serif;
     font-size: 3rem;
 }
 
 .projectpage .description {
+    text-align: center;
     margin-bottom: 2rem;
     font-family: 'Trispace', sans-serif;
     font-size: 1.3rem;
@@ -53,14 +66,14 @@
 }
 
 .projectpage .tasks_container {
-    width: 65%;
+    width: 80%;
     min-height: 100%;
     margin-top: 2rem;
     padding: 1rem;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-column-gap: 0.5rem;
-    grid-row-gap: 1rem;
+    grid-row-gap: 2rem;
     align-items: center;
     flex-wrap: wrap;
     /* background-color: green; */
@@ -68,7 +81,7 @@
 
 .projectpage .task_card {
     /* position: relative; */
-    min-height: 10rem;
+    height: 10rem;
     width: 11rem;
     padding: 1rem;
     display: flex;
@@ -133,4 +146,259 @@
 
 .projectpage .task_card .add {
     cursor: pointer;
+}
+
+/* Media Queries */
+
+@media only screen and (max-width: 480px) {
+
+    .projectpage {
+        min-height: 90vh;
+        /* background-color: orange; */
+    }
+
+    .projectpage .title_div {
+        width: 100%;
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* background-color: palegreen; */
+    }
+
+    .projectpage .title {
+        margin-right: 1rem;
+        font-size: 2rem;
+    }
+
+    .projectpage .title_div .title_icons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* background-color: olive; */
+    }
+
+    .projectpage .title_div .title_icons h2 {
+        margin-right: 0.5rem;
+    }
+
+    .projectpage .icons {
+        display: none;
+    }
+    
+    .projectpage .description {
+        font-size: 1.1rem;
+        /* background-color: aqua; */
+    }
+
+    .projectpage .tasks_container {
+        width: 90%;
+        margin-top: 2rem;
+        margin-bottom: 5rem;
+        grid-template-columns: 1fr 1fr;
+        /* background-color: green; */
+    }
+
+    .projectpage .task_card {
+        height: 9rem;
+        width: 9rem;
+        padding: 1rem;
+    }
+
+}
+
+@media only screen and (min-width: 481px) and (max-width: 600px) {
+
+    .projectpage {
+        min-height: 90vh;
+        /* background-color: orange; */
+    }
+
+    .projectpage .title_div {
+        width: 100%;
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* background-color: palegreen; */
+    }
+
+    .projectpage .title {
+        margin-right: 1rem;
+        font-size: 2rem;
+    }
+
+    .projectpage .title_div .title_icons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* background-color: olive; */
+    }
+
+    .projectpage .title_div .title_icons h2 {
+        margin-right: 0.5rem;
+    }
+
+    .projectpage .icons {
+        display: none;
+    }
+    
+    .projectpage .description {
+        font-size: 1.1rem;
+        /* background-color: aqua; */
+    }
+
+    .projectpage .tasks_container {
+        width: 90%;
+        margin-top: 2rem;
+        margin-bottom: 5rem;
+        padding: 1rem 0.7rem;
+        grid-template-columns: 1fr 1fr 1fr;
+        /* background-color: green; */
+    }
+
+    .projectpage .task_card {
+        height: 9rem;
+        width: 8rem;
+        padding: 0.3rem;
+    }
+
+}
+
+@media only screen and (min-width: 601px) and (max-width: 800px) {
+
+    .projectpage {
+        min-height: 90vh;
+        /* background-color: orange; */
+    }
+
+    .projectpage .title_div {
+        width: 100%;
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* background-color: palegreen; */
+    }
+
+    .projectpage .title {
+        margin-right: 1rem;
+        font-size: 2rem;
+    }
+
+    .projectpage .title_div .title_icons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* background-color: olive; */
+    }
+
+    .projectpage .title_div .title_icons h2 {
+        margin-right: 0.5rem;
+    }
+
+    .projectpage .icons {
+        display: none;
+    }
+    
+    .projectpage .description {
+        font-size: 1.1rem;
+        /* background-color: aqua; */
+    }
+
+    .projectpage .tasks_container {
+        width: 100%;
+        margin-top: 2rem;
+        margin-bottom: 5rem;
+        padding: 1rem;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        /* background-color: green; */
+    }
+
+    .projectpage .task_card {
+        height: 9rem;
+        width: 8.7rem;
+        padding: 0.5rem;
+    }
+
+}
+
+@media only screen and (min-width: 801px) and (max-width: 900px) {
+
+    .projectpage {
+        min-height: 90vh;
+        /* background-color: orange; */
+    }
+
+    .projectpage .title_div {
+        width: 100%;
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* background-color: palegreen; */
+    }
+
+    .projectpage .title {
+        margin-right: 1rem;
+        font-size: 2rem;
+    }
+
+    .projectpage .title_div .title_icons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* background-color: olive; */
+    }
+
+    .projectpage .title_div .title_icons h2 {
+        margin-right: 0.5rem;
+    }
+
+    .projectpage .icons {
+        display: none;
+    }
+    
+    .projectpage .description {
+        font-size: 1.1rem;
+        /* background-color: aqua; */
+    }
+
+    .projectpage .tasks_container {
+        width: 100%;
+        margin-top: 2rem;
+        margin-bottom: 5rem;
+        padding: 1rem;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        /* background-color: green; */
+    }
+
+    .projectpage .task_card {
+        /* height: 9rem; */
+        width: 9rem;
+        padding: 1rem;
+    }
+
+}
+
+@media only screen and (min-width: 901px) and (max-width: 1200px) {
+
+    .projectpage .tasks_container {
+        width: 95%;
+        margin-top: 2rem;
+        margin-bottom: 5rem;
+        padding: 1rem;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        /* background-color: green; */
+    }
+
+    .projectpage .task_card {
+        width: 10rem;
+        padding: 1rem;
+    }
+
 }
