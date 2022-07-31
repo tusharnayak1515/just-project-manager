@@ -9,7 +9,7 @@ const SpinnerModal = () => {
   const topRef = useRef();
 
   useEffect(()=> {
-    topRef.current?.scrollIntoView({ behavior: "smooth" });
+    topRef.current?.scrollIntoView({ behavior: "auto" });
   }, []);
 
   return ReactDom.createPortal(
