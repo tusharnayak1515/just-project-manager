@@ -83,6 +83,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 0.1rem solid rgb(1, 1, 37);
     border-radius: 0.5rem;
     cursor: pointer;
 }
