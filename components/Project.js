@@ -9,7 +9,7 @@ const Project = ({project}) => {
   let inProgress = status === "in progress";
   let completed = status === "completed";
   return (
-    <div className={styles.project_box} style={{backgroundColor: created ? "white" : inProgress ? "orange" : completed ? "rgb(1, 209, 1)" : "white"}}>
+    <div className={styles.project_box} style={{backgroundColor: created ? "white" : inProgress ? "yellow" : completed ? "rgb(1, 209, 1)" : "white"}}>
         <Link href={`/projects/${project?._id}`}><h3>{project?.title}</h3></Link>
     </div>
   )

@@ -7,6 +7,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: url("/static/images/my_bg1.svg") center center no-repeat;
+    background-size: cover;
     /* background-color: orange; */
 }
 
@@ -25,15 +27,17 @@
 }
 
 .projectpage .title {
-    font-family: 'Trispace', sans-serif;
+    color: aqua;
     font-size: 3rem;
+    font-family: 'Trispace', sans-serif;
 }
 
 .projectpage .description {
     text-align: center;
     margin-bottom: 2rem;
-    font-family: 'Trispace', sans-serif;
+    color: aqua;
     font-size: 1.3rem;
+    font-family: 'Trispace', sans-serif;
 }
 
 .projectpage .icons {
@@ -49,12 +53,12 @@
 }
 
 .projectpage .icons h2 {
+    color: white;
     cursor: pointer;
 }
 
 .projectpage .icons .editIcon:hover {
-    /* color: rgb(141, 92, 0); */
-    color: orangered;
+    color: yellow;
 }
 
 .projectpage .icons .deleteIcon:hover {
@@ -62,6 +66,7 @@
 }
 
 .projectpage .subhead {
+    color: aqua;
     font-family: 'Cairo', sans-serif;
 }
 
@@ -90,6 +95,7 @@
     flex-wrap: wrap;
     border: 0.1rem solid #010125;
     border-radius: 0.5rem;
+    box-shadow: 0.005rem 0.05rem 0.3rem 0.1rem rgb(128, 128, 128);
     cursor: pointer;
 }
 
@@ -180,7 +186,16 @@
     }
 
     .projectpage .title_div .title_icons h2 {
+        color: white;
         margin-right: 0.5rem;
+    }
+
+    .projectpage .title_div .title_icons .editIcon:hover {
+        color: yellow;
+    }
+    
+    .projectpage .title_div .title_icons .deleteIcon:hover {
+        color: red;
     }
 
     .projectpage .icons {
@@ -239,6 +254,19 @@
 
     .projectpage .title_div .title_icons h2 {
         margin-right: 0.5rem;
+    }
+
+    .projectpage .title_div .title_icons h2 {
+        color: white;
+        margin-right: 0.5rem;
+    }
+
+    .projectpage .title_div .title_icons .editIcon:hover {
+        color: yellow;
+    }
+    
+    .projectpage .title_div .title_icons .deleteIcon:hover {
+        color: red;
     }
 
     .projectpage .icons {
@@ -300,6 +328,19 @@
         margin-right: 0.5rem;
     }
 
+    .projectpage .title_div .title_icons h2 {
+        color: white;
+        margin-right: 0.5rem;
+    }
+
+    .projectpage .title_div .title_icons .editIcon:hover {
+        color: yellow;
+    }
+    
+    .projectpage .title_div .title_icons .deleteIcon:hover {
+        color: red;
+    }
+
     .projectpage .icons {
         display: none;
     }
@@ -357,6 +398,19 @@
 
     .projectpage .title_div .title_icons h2 {
         margin-right: 0.5rem;
+    }
+
+    .projectpage .title_div .title_icons h2 {
+        color: white;
+        margin-right: 0.5rem;
+    }
+
+    .projectpage .title_div .title_icons .editIcon:hover {
+        color: yellow;
+    }
+    
+    .projectpage .title_div .title_icons .deleteIcon:hover {
+        color: red;
     }
 
     .projectpage .icons {

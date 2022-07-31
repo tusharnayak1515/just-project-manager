@@ -9,8 +9,9 @@
   flex-direction: column;
   /* justify-content: center; */
   align-items: center;
-  background-color: whitesmoke;
-  /* background-color: yellowgreen; */
+  /* background-color: whitesmoke; */
+  background: url("/static/images/my_bg1.svg") center center no-repeat;
+  background-size: cover;
 }
 
 .footer {
@@ -18,7 +19,7 @@
   flex: 1;
   padding: 2rem 0;
   color: white;
-  border-top: 1px solid #eaeaea;
+  border-top: 0.1rem solid aqua;
   justify-content: center;
   align-items: center;
   background-color: rgb(1, 1, 37);
@@ -36,6 +37,7 @@
 
 .title,
 .description {
+  color: aqua;
   text-align: center;
 }
 

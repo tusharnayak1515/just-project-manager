@@ -148,14 +148,14 @@ const ProjectPage = () => {
                   backgroundColor: created
                     ? "white"
                     : inProgress
-                      ? "orange"
+                      ? "yellow"
                       : completed
                         ? "rgb(1, 209, 1)"
                         : "white",
                 }}
                 onClick={(e) => onCardClick(e, t?._id)}
               >
-                <h3 className={styles.task_title}>{t?.title.substring(0, 22)}</h3>
+                <h3 className={styles.task_title}>{t?.title.substring(0, 30)}</h3>
               </div>
             );
           })}
