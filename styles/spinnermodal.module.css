@@ -31,7 +31,16 @@
 /* Media Queries */
 
 @media only screen and (max-width: 900px) {
+
+    .modal {
+        min-height: 60vh;
+        min-height: 70vh;
+        width: 50vw;
+        /* background-color: yellowgreen; */
+    }
+
     .modal span img {
         width: 20rem !important;
     }
+    
 }
