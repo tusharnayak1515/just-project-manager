@@ -73,7 +73,7 @@
 .projectpage .tasks_container {
     width: 80%;
     min-height: 100%;
-    margin-top: 2rem;
+    margin: 2rem 0;
     padding: 1rem;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
