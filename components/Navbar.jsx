@@ -1,13 +1,16 @@
 import React from 'react';
 import Link from 'next/link';
+import Head from 'next/head';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { actionCreators } from '../redux';
 import { useRouter } from 'next/router';
-import ReactAwesomeClock from 'react-awesome-clock';
+import Clock from './Clock';
+import { RiHome2Fill } from 'react-icons/ri';
+import { IoMdAdd } from 'react-icons/io';
+import { CgProfile } from 'react-icons/cg';
+import { MdLogout } from 'react-icons/md';
 
 import styles from '../styles/navbar.module.css';
-import Clock from './Clock';
-import Head from 'next/head';
 
 const Navbar = ({setShow}) => {
   const router = useRouter();
@@ -31,6 +34,14 @@ const Navbar = ({setShow}) => {
           rel="stylesheet"
         />
       </Head>
+
+      <div className={styles.phone_nav}>
+        <Link href="/"><h1><RiHome2Fill /></h1></Link>
+        {router.pathname === '/' && <h1 onClick={(e)=> {e.preventDefault();setShow(true)}}><IoMdAdd /></h1>}
+        <Link href="/profile"><h1><CgProfile /></h1></Link>
+        <h1><MdLogout /></h1>
+      </div>
+
       <div className={styles.leftSide}>
         <div className={styles.logo}>
           <h1>JPM</h1>
@@ -41,7 +52,6 @@ const Navbar = ({setShow}) => {
       </div>
       <div className={styles.middle}>
         {/* <input type="text" placeholder='Search your projects' /> */}
-        {/* <ReactAwesomeClock style={{ color: "white", fontSize: 20, textShadow: "0 0 10px grey", fontFamily: "aerial" }} clockSeparator=" " /> */}
         <Clock />
       </div>
       <div className={styles.rightSide}>

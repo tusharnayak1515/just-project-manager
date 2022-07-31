@@ -18,7 +18,7 @@
     width: 35%;
     padding: 1rem;
     min-height: 30vh;
-    max-height: 40vh;
+    max-height: 45vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -35,7 +35,8 @@
     margin-bottom: 1rem;
     padding: 0.5rem 1rem;
     display: flex;
-    justify-content: flex-start;
+    /* flex-wrap: wrap; */
+    justify-content: center;
     align-items: center;
     /* background-color: pink; */
 }
@@ -62,7 +63,7 @@
 }
 
 .profile_div .box .btnDiv {
-    width: 90%;
+    width: 24rem;
     /* padding: 1rem; */
     display: flex;
     flex-direction: column;
@@ -73,7 +74,7 @@
 
 .profile_div .box .btnDiv button {
     outline: none;
-    width: 80%;
+    width: 100%;
     padding: 0.5rem 2rem;
     margin: 0.5rem 0;
     color: white;
@@ -104,4 +105,152 @@
     color: red;
     background-color: white;
     transition: all 0.2s ease-in-out;
+}
+
+/* Media Queries */
+
+@media only screen and (max-width: 480px) {
+
+    .profile_div {
+        min-height: 90vh;
+    }
+
+    .profile_div .box {
+        width: 90vw;
+        padding: 1rem;
+        min-height: 40vh;
+        max-height: 50vh;
+        /* background-color: yellowgreen; */
+    }
+
+    .profile_div .box .flexDiv {
+        width: 100%;
+        padding: 0.5rem;
+        justify-content: center;
+        /* background-color: pink; */
+    }
+
+    .profile_div .box .flexDiv h2, .profile_div .box .flexDiv input {
+        margin-right: 0.5rem;
+    }
+
+    .profile_div .box .flexDiv input {
+        font-size: 1rem;
+        padding: 0.5rem;
+    }
+
+    .profile_div .box .btnDiv {
+        width: 100%;
+        padding: 0.5rem;
+        /* background-color: orange; */
+    }
+
+    .profile_div .box .btnDiv button {
+        width: 100%;
+    }
+
+}
+
+@media only screen and (min-width: 481px) and (max-width: 600px) {
+
+    .profile_div {
+        min-height: 90vh;
+    }
+
+    .profile_div .box {
+        width: 80%;
+        padding: 1rem;
+        min-height: 40vh;
+        max-height: 50vh;
+        /* background-color: yellowgreen; */
+    }
+
+    .profile_div .box .flexDiv {
+        width: 100%;
+        padding: 0.5rem;
+        justify-content: center;
+        /* background-color: pink; */
+    }
+
+    .profile_div .box .flexDiv h2, .profile_div .box .flexDiv input {
+        margin-right: 1rem;
+    }
+
+    .profile_div .box .flexDiv input {
+        /* font-size: 1.1rem; */
+        padding: 0.5rem;
+    }
+
+    .profile_div .box .btnDiv {
+        width: 100%;
+        padding: 0.5rem;
+        /* background-color: orange; */
+    }
+
+    .profile_div .box .btnDiv button {
+        width: 100%;
+    }
+
+}
+
+@media only screen and (min-width: 601px) and (max-width: 900px) {
+
+    .profile_div {
+        min-height: 90vh;
+    }
+
+    .profile_div .box {
+        width: 70%;
+        padding: 1rem;
+        min-height: 40vh;
+        max-height: 50vh;
+        /* background-color: yellowgreen; */
+    }
+
+    .profile_div .box .flexDiv {
+        width: 100%;
+        padding: 0.5rem;
+        justify-content: center;
+        /* background-color: pink; */
+    }
+
+    .profile_div .box .flexDiv h2, .profile_div .box .flexDiv input {
+        margin-right: 1rem;
+    }
+
+    .profile_div .box .flexDiv input {
+        /* font-size: 1.1rem; */
+        padding: 0.5rem;
+    }
+
+    .profile_div .box .btnDiv {
+        width: 100%;
+        padding: 0.5rem;
+        /* background-color: orange; */
+    }
+
+    .profile_div .box .btnDiv button {
+        width: 100%;
+    }
+
+}
+
+@media only screen and (min-width: 901px) and (max-width: 1200px) {
+
+    .profile_div .box {
+        width: 50%;
+        min-height: 40vh;
+        max-height: 50vh;
+        /* background-color: yellowgreen; */
+    }
+
+    .profile_div .box .btnDiv {
+        width: 24rem;
+        /* background-color: orange; */
+    }
+
+    .profile_div .box .btnDiv button {
+        width: 100%;
+    }
+
 }

@@ -25,3 +25,12 @@
 .project_box h3:hover {
     text-decoration: underline;
 }
+
+/* Media Queries */
+
+@media only screen and (max-width: 480px) {
+    .project_box {
+        padding: 0.7rem 1.6rem;
+        margin: 1rem 0;
+    }
+}

@@ -100,3 +100,27 @@
     border: 0.1rem solid  rgb(101, 0, 0);
     transition: all 0.2s ease-in-out;
 }
+
+/* Media Queries */
+
+@media only screen and (max-width: 480px) {
+
+    .modal {
+        min-height: 30vh;
+        max-height: 65vh;
+        width: 80%;
+        margin-top: 10vh;
+    }
+
+}
+
+@media only screen and (min-width: 481px) and (max-width: 720px) {
+
+    .modal {
+        min-height: 30vh;
+        max-height: 65vh;
+        width: 60%;
+        margin-top: 10vh;
+    }
+
+}
