@@ -35,7 +35,8 @@ const handler = validate({body: schema}, async (req, res)=> {
         .populate("projects", "_id title description tasks status");
       
       const projects = await Project.find({user: userId})
-        .populate("tasks", "_id title status project");
+        .populate("tasks", "_id title status project")
+        .sort("-createdAt");
 
       success = true;
       return res.json({ success, user, projects, status: 200 });

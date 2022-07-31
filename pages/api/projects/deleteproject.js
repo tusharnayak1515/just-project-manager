@@ -34,7 +34,8 @@ const handler = async (req, res)=> {
       project = await Project.findByIdAndDelete(projectId,{new: true});
       
       const projects = await Project.find({user: userId})
-        .populate("tasks", "_id title status project");
+        .populate("tasks", "_id title status project")
+        .sort("-createdAt");
 
       success = true;
       return res.json({ success, projects, status: 200 });
