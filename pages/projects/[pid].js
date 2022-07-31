@@ -155,7 +155,7 @@ const ProjectPage = () => {
                 }}
                 onClick={(e) => onCardClick(e, t?._id)}
               >
-                <h2 className={styles.task_title}>{t?.title.substring(0, 22)}</h2>
+                <h3 className={styles.task_title}>{t?.title.substring(0, 22)}</h3>
               </div>
             );
           })}

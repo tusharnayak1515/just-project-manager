@@ -97,7 +97,7 @@
     background-color: rgb(226, 226, 226) !important;
 }
 
-.projectpage .task_card h2 {
+.projectpage .task_card h3 {
     font-family: 'Titillium Web', sans-serif;
     text-align: center;
     word-wrap: break-word;
@@ -201,6 +201,7 @@
     }
 
     .projectpage .task_card {
+        height: 9rem;
         width: 9rem;
         padding: 1rem;
     }
