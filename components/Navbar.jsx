@@ -39,7 +39,7 @@ const Navbar = ({setShow}) => {
         <Link href="/"><h1><RiHome2Fill /></h1></Link>
         {router.pathname === '/' && <h1 onClick={(e)=> {e.preventDefault();setShow(true)}}><IoMdAdd /></h1>}
         <Link href="/profile"><h1><CgProfile /></h1></Link>
-        <h1><MdLogout /></h1>
+        <h1 onClick={onLogout}><MdLogout /></h1>
       </div>
 
       <div className={styles.leftSide}>
