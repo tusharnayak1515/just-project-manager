@@ -1,7 +1,7 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Archivo&family=Josefin+Sans:wght@600&display=swap'); */
 
 .container {
-  min-height: 120vh;
+  min-height: 100vh;
   width: 100%;
   /* background-color: orange; */
   background: url("/static/images/my_bg1.svg") center center no-repeat;
@@ -83,13 +83,7 @@
   }
 
   .footer {
-    /* display: none; */
-    height: 10vh;
-    padding: 0;
-    color: white;
-    border: none;
-    background: none;
-    /* background-color: rgb(210, 210, 255); */
+    display: none;
   }
 
 }
@@ -103,11 +97,7 @@
   }
 
   .footer {
-    height: 10vh;
-    padding: 0;
-    color: white;
-    border: none;
-    background: none;
+    display: none;
   }
 
 }
