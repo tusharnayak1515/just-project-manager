@@ -8,11 +8,87 @@
     /* justify-content: center; */
     align-items: center;
     background-color: rgb(239, 239, 239);
+    /* background-color: orange; */
     /* background: url("../public/static/images/notFound.gif") center center no-repeat;
     background-size: contain; */
+}
+
+.notFound span img {
+    height: 25rem !important;
+    width: 30rem !important;
 }
 
 .notFound h1 {
     font-size: 3rem;
     font-family: 'Cinzel', serif;
+}
+
+.notFound button {
+    outline: none;
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    color: white;
+    padding: 1rem 2rem;
+    border: 0.1rem solid #010125;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    background-color: #3521b5;
+}
+
+.notFound button:hover {
+    color: #3521b5;
+    background-color: white;
+    transition: all 0.25s ease-in-out;
+}
+
+/* Media Queries */
+
+@media only screen and (max-width: 480px) {
+
+    .notFound {
+        min-height: 90vh;
+        justify-content: center;
+    }
+
+    .notFound span img {
+        height: 20rem !important;
+        width: 25rem !important;
+    }
+
+    .notFound h1 {
+        font-size: 2rem;
+        margin-top: 2rem;
+    }
+
+    .notFound button {
+        font-size: 1.3rem;
+        padding: 0.8rem 1.5rem;
+        background-color: #3521b5;
+    }
+    
+}
+
+@media only screen and (min-width: 481px) and (max-width: 900px) {
+
+    .notFound {
+        min-height: 90vh;
+        justify-content: center;
+    }
+
+    .notFound span img {
+        height: 20rem !important;
+        width: 25rem !important;
+    }
+
+    .notFound h1 {
+        font-size: 2rem;
+        margin-top: 2rem;
+    }
+
+    .notFound button {
+        font-size: 1.4rem;
+        padding: 1rem 1.6rem;
+        background-color: #3521b5;
+    }
+    
 }
