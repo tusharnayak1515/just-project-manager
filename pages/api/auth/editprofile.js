@@ -4,6 +4,7 @@ import fetchUser from "../../../middlewares/fetchUser";
 import Project from "../../../models/Project";
 import Joi from "joi";
 import validate from "../../../middlewares/validate";
+import { setCookie, getCookie, setCookies, getCookies } from 'cookies-next';
 
 const schema = Joi.object({
   name: Joi.string().min(4).required(),
