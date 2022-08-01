@@ -16,8 +16,13 @@ const handler = validate({body: schema}, async (req, res)=> {
   if (req.method === 'POST') {
     let success;
     try {
-      const projectId = req.query.project;
       const userId = req.user.id;
+      const projectId = req.query.project;
+      if(projectId.length !== 24) {
+        success = false;
+        return res.status(400).json({success, error: "Invalid projectId"});
+      }
+
       let user = await User.findById(userId);
       if(!user) {
         success = false;

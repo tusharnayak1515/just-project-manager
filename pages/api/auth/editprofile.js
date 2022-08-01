@@ -34,8 +34,9 @@ const handler = validate({ body: schema }, async (req, res)=> {
       }
 
       user = await User.findByIdAndUpdate(userId, {name: name, email: email}, {new: true})
-        .populate("projects", "_id title description tasks status");
+        .select("-password");
 
+      setCookies("jpm_profile", JSON.stringify(user), {req, res});
       success = true;
       return res.json({ success, user, status: 200 });
 

@@ -10,8 +10,13 @@ const handler = async (req, res)=> {
   if (req.method === 'DELETE') {
     let success;
     try {
-      const taskId = req.query.taskId;
       const userId = req.user.id;
+      const taskId = req.query.taskId;
+      if(taskId.length !== 24) {
+        success = false;
+        return res.status(400).json({success, error: "Invalid taskId"});
+      }
+
       let user = await User.findById(userId);
       if(!user) {
         success = false;
@@ -25,6 +30,10 @@ const handler = async (req, res)=> {
       }
 
       const projectId = task.project.toString();
+      if(projectId.length !== 24) {
+        success = false;
+        return res.status(400).json({success, error: "Invalid projectId"});
+      }
 
       let project = await Project.findById(projectId);
       if(!project) {

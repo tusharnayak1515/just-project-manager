@@ -9,8 +9,13 @@ const handler = async (req, res)=> {
   if (req.method === 'DELETE') {
     let success;
     try {
-      const projectId = req.query.project;
       const userId = req.user.id;
+      const projectId = req.query.project;
+      if(projectId.length !== 24) {
+        success = false;
+        return res.status(400).json({success, error: "Invalid projectId"});
+      }
+
       let user = await User.findById(userId);
       if(!user) {
         success = false;
@@ -29,7 +34,7 @@ const handler = async (req, res)=> {
       }
 
       user = await User.findByIdAndUpdate(userId, {$pull: {projects: projectId}},{new: true})
-        .populate("projects", "_id title description tasks status");
+        .select("-password");
 
       project = await Project.findByIdAndDelete(projectId,{new: true});
       
@@ -38,7 +43,7 @@ const handler = async (req, res)=> {
         .sort("-createdAt");
 
       success = true;
-      return res.json({ success, projects, status: 200 });
+      return res.json({ success, user, projects, status: 200 });
 
     } catch (error) {
       success = false;

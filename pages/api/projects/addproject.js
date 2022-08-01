@@ -32,7 +32,7 @@ const handler = validate({body: schema}, async (req, res)=> {
       });
 
       user = await User.findByIdAndUpdate(userId, {$push: {projects: project}},{new: true})
-        .populate("projects", "_id title description tasks status");
+        .select("-password");
       
       const projects = await Project.find({user: userId})
         .populate("tasks", "_id title status project")
