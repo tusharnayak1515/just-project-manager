@@ -12,7 +12,8 @@ const reducers = combineReducers({
 
 const masterReducer = (state,action)=> {
     if(action.type === HYDRATE) {
-        // console.log("yes",action.payload.projectReducer.projects);
+        // console.log("state.project: ",action.payload.projectReducer);
+        // console.log("yes",action.payload.projectReducer);
         // console.log("yes",action.payload);
         // console.log("yes",action.payload.projectReducer);
         // console.log("state",state);

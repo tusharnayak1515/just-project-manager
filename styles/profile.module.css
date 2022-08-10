@@ -5,7 +5,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: url("/static/images/my_bg1.svg") center center no-repeat;
+    background: url("/static/images/my_bg123.svg") center center no-repeat;
     background-size: cover;
     /* background-color: orange; */
 }
