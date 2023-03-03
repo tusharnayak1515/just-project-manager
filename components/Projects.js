@@ -18,7 +18,7 @@ const Projects = () => {
 
   return (
     <div className={styles.projects_container}>
-        {projects && projects.length === 0 ? <p>No projects!</p> : projects?.map((p)=> {
+        {projects && projects.length === 0 ? <p style={{color: "white", fontSize: "1.3rem"}}>No projects!</p> : projects?.map((p)=> {
           return <Project key={p?._id} project={p} />
         })}
     </div>
